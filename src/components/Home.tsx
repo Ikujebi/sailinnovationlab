@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Card } from "antd";
+
 
 const Home: React.FC = () => {
   const textRef = useRef<HTMLDivElement | null>(null);
@@ -22,7 +22,7 @@ const Home: React.FC = () => {
   const pic5 =
     "https://sailab.ng/wp-content/uploads/2023/10/Group-1000004131.png";
 
-  const [index, setIndex] = useState(0);
+  const [_index, setIndex] = useState(0);
   const slides = [
     {
       image: pic1,
