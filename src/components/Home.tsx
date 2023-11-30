@@ -134,10 +134,10 @@ const Home: React.FC = () => {
         </header>
         <section className="ml-3 mt-[9rem] text-white xl:flex xl:flex-col xl:justify-end xl:items-end  xl:mr-[2rem]">
           <div>
-            <div className="bg-white text-black flex justify-center items-center rounded-2xl h-[1.5rem] w-[10rem] md:w-[24rem] lg:w-[24rem] xl:w-[24rem] 2xl:w-[24rem]">
+            <div className="bg-white text-black flex justify-center items-center rounded-2xl h-[1.5rem] w-[10rem] md:w-[24rem] lg:w-[24rem] xl:w-[24rem] 2xl:w-[24rem] md:text-[1.15rem]  lg:text-[1.15rem]  xl:text-[1.15rem]  2xl:text-[1.15rem]  text-[.58rem]">
               <h5>WELCOME TO SAIL INNOVATION LAB</h5>
             </div>
-            <article className=" text-[2.3rem] font-extrabold mt-8 mb-6">
+            <article className=" md:text-[2.3rem]  lg:text-[2.3rem]  xl:text-[2.3rem]  2xl:text-[2.3rem]  text-[.78rem] font-extrabold mt-8 mb-6">
               <h5>
                 Where{" "}
                 <span
@@ -149,14 +149,14 @@ const Home: React.FC = () => {
               <h5>Thrive in Lagos East</h5>
             </article>
             <div>
-              <p className=" md:w-[25rem] text-[1.04rem]">
+              <p className=" md:w-[25rem] md:text-[1.15rem]  lg:text-[1.15rem]  xl:text-[1.15rem]  2xl:text-[1.15rem]  text-[.58rem]">
                 Whether you’re a budding entrepreneur, a tech enthusiast, or a
                 curious learner, SAIL is your canvas for growth.
               </p>
             </div>
           </div>
-          <article>
-            <p className=" text-black flex justify-center font-semibold  bg-[#DAA520] w-[15rem] p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white">
+          <article className=" md:w-[15rem] lg:w-[15rem] xl:w-[15rem] 2x:lw-[15rem] w-[9rem] md:text-[1.15rem]  lg:text-[1.15rem]  xl:text-[1.15rem]  2xl:text-[1.15rem]  text-[.58rem]">
+            <p className=" text-black flex justify-center font-semibold  bg-[#DAA520]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white">
               SEE OUR PROGRAMS{" "}
               <img
                 src={arrow}
@@ -164,7 +164,7 @@ const Home: React.FC = () => {
                 className=" ml-2 mt-[.44rem] w-4 h-3"
               />
             </p>
-            <p className=" text-black flex justify-center font-semibold  bg-[#DAA520] w-[15rem] p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white">
+            <p className=" text-black flex justify-center font-semibold  bg-[#DAA520]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white">
               WANT TO VISIT ?{" "}
               <img
                 src={arrow}
@@ -176,7 +176,7 @@ const Home: React.FC = () => {
         </section>
       </div>
       <div className="white-bg w-[50%] mr-10">
-        <nav className="mt-[2.5rem] w-[100%] flex gap-6 justify-end font-normal text-[1.15rem]">
+        <nav className="mt-[2.5rem] w-[100%] flex gap-2 mr-4 md:gap-6 lg:gap-6 xl:gap-6 2xl:gap-6 justify-end md:font-normal lg:font-normal xl:font-normal 2xl:font-normal font-bold md:text-[1.15rem]  lg:text-[1.15rem]  xl:text-[1.15rem]  2xl:text-[1.15rem]  text-[.58rem]">
           <p className=" ">About Us</p>
           <p>Our Programs</p>
           <p>Blog</p>
