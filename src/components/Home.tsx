@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 import About from "./About";
 import Services from "./Services";
+import Achievement from "./Achievement";
 
 const Home: React.FC = () => {
   const textRef = useRef<HTMLDivElement | null>(null);
@@ -210,6 +211,9 @@ const Home: React.FC = () => {
       </section>
       <section>
         <Services/>
+      </section>
+      <section>
+        <Achievement/>
       </section>
     </div>
   );
