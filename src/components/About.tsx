@@ -11,7 +11,7 @@ const About = () => {
           <img src={ab} alt="" className="w-[80%]" />
         </article>
         <article className="w-[50%]">
-          <header className=" bg-[#39548E] rounded-xl py-1 px-4 flex justify-center w-[8rem]">
+          <header className=" bg-[#184c94] text-white rounded-xl py-1 px-4 flex justify-center w-[8rem]">
             <h2>ABOUT US</h2>
           </header>
           <main>
@@ -33,7 +33,7 @@ const About = () => {
               <button>
                 <Link
               to="/guest"
-              className=" text-white flex justify-center font-semibold  bg-[#39548E] py-2  px-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white"
+              className=" text-white flex justify-center font-semibold  bg-[#184c94] py-2  px-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white"
             >
               LEARN MORE{" "}
               <img

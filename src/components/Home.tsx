@@ -117,7 +117,7 @@ const Home: React.FC = () => {
   return (
     <div>
     <div className="flex ">
-      <div className="bg-[#39548E] h-screen w-[49.9%]">
+      <div className="bg-[#184c94] h-screen w-[49.9%]">
         <header>
           <img src={logo} alt="sail logo" className="p-[1.7rem] w-[17rem]" />
         </header>
@@ -145,7 +145,7 @@ const Home: React.FC = () => {
             </div>
           </div>
           <article className=" md:w-[15rem] lg:w-[15rem] xl:w-[15rem] 2x:lw-[15rem] w-[9rem] md:text-[1.15rem]  lg:text-[1.15rem]  xl:text-[1.15rem]  2xl:text-[1.15rem]  text-[.58rem]">
-            <p className=" text-black flex justify-center font-semibold  bg-[#DAA520]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white">
+            <p className=" text-black flex justify-center font-semibold  bg-[#ffcc4c]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white">
               OUR PROGRAMS{" "}
               <img
                 src={arrow}
@@ -155,7 +155,7 @@ const Home: React.FC = () => {
             </p>
             <Link
               to="/guest"
-              className=" text-black flex justify-center font-semibold  bg-[#DAA520]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white"
+              className=" text-black flex justify-center font-semibold  bg-[#fccc4c]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white"
             >
               WANT TO VISIT ?{" "}
               <img
