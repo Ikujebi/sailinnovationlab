@@ -6,8 +6,9 @@ import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {Link} from "react-router-dom"
-
+import { Link } from "react-router-dom";
+import About from "./About";
+import Services from "./Services";
 
 const Home: React.FC = () => {
   const textRef = useRef<HTMLDivElement | null>(null);
@@ -27,31 +28,18 @@ const Home: React.FC = () => {
   const slides = [
     {
       image: pic1,
-      title: "Web Development",
-      description: "I specialize in building scalable web applications.",
     },
     {
       image: pic2,
-      title: "Web Design",
-      description: "I'm passionate about creating visually stunning webpages.",
     },
     {
       image: pic3,
-      title: "Mobile Apps",
-      description:
-        "I'm currently learning to build mobile apps using React Native.",
     },
     {
       image: pic4,
-      title: "Project Management",
-      description:
-        "Having studied business administration for my first degree, I am currently trying to hone my project management skills.",
     },
     {
       image: pic5,
-      title: "Project Management",
-      description:
-        "Having studied business administration for my first degree, I am currently trying to hone my project management skills.",
     },
   ];
 
@@ -112,7 +100,6 @@ const Home: React.FC = () => {
       },
     });
 
-    // Initial start
     textAnimation.restart();
 
     // Update strings every 3 seconds
@@ -128,7 +115,8 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex">
+    <div>
+    <div className="flex ">
       <div className="bg-[#39548E] h-screen w-[49.9%]">
         <header>
           <img src={logo} alt="sail logo" className="p-[1.7rem] w-[17rem]" />
@@ -147,7 +135,7 @@ const Home: React.FC = () => {
                   className="bg-[#5073A8] p-2 rounded-md"
                 ></span>
               </h5>
-              <h5>Thrive in Lagos East</h5>
+              <h5>Thrives in Lagos East</h5>
             </article>
             <div>
               <p className=" md:w-[25rem] md:text-[1.15rem]  lg:text-[1.15rem]  xl:text-[1.15rem]  2xl:text-[1.15rem]  text-[.58rem]">
@@ -158,14 +146,17 @@ const Home: React.FC = () => {
           </div>
           <article className=" md:w-[15rem] lg:w-[15rem] xl:w-[15rem] 2x:lw-[15rem] w-[9rem] md:text-[1.15rem]  lg:text-[1.15rem]  xl:text-[1.15rem]  2xl:text-[1.15rem]  text-[.58rem]">
             <p className=" text-black flex justify-center font-semibold  bg-[#DAA520]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white">
-              SEE OUR PROGRAMS{" "}
+              OUR PROGRAMS{" "}
               <img
                 src={arrow}
                 alt="arrow"
                 className=" ml-2 mt-[.44rem] w-4 h-3"
               />
             </p>
-            <Link to="/guest" className=" text-black flex justify-center font-semibold  bg-[#DAA520]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white">
+            <Link
+              to="/guest"
+              className=" text-black flex justify-center font-semibold  bg-[#DAA520]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white"
+            >
               WANT TO VISIT ?{" "}
               <img
                 src={arrow}
@@ -181,8 +172,14 @@ const Home: React.FC = () => {
           <p className=" ">About Us</p>
           <p>Our Programs</p>
           <p>Blog</p>
+          <Link to={"/guest"}>
+            <p>Visit</p>
+          </Link>
         </nav>
-        <div id="services" className="flex justify-center align-center px-2 mt-[7rem]">
+        <div
+          id="services"
+          className="flex justify-center align-center px-2 mt-[7rem]"
+        >
           <div className="container">
             <Slider {...sliderSettings}>
               {slides.map((item, itemIndex) => (
@@ -205,6 +202,15 @@ const Home: React.FC = () => {
           </div>
         </div>
       </div>
+      </div>
+      <section className="">
+        <header className="flex justify-center">
+      <About/>
+      </header>
+      </section>
+      <section>
+        <Services/>
+      </section>
     </div>
   );
 };

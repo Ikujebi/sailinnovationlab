@@ -53,11 +53,16 @@ interface GuestState {
     };
 
   return (
-    <div className=" flex flex-col bg-blue-100 ">
+    <div className=" flex flex-col bg-blue-100 h-screen">
         <img src={logo} alt="" className="w-[8rem] h-[5rem] mb-[3rem] ml-[2rem] mt-5"/>
 
         <main className=" flex flex-col mx-[auto] justify-center items-center">
-    <Row gutter={16} className="md:w-[70%] flex justify-center">
+        <footer className="mb-9 flex justify-center items-center gap-[.7rem] md:gap-[2rem] lg:gap-[2rem] xl:gap-[2rem] 2xl:gap-[2rem]">
+        <img src={stem} alt="" className="w-[11rem] md:w-[15rem] xl:w-[15rem] lg:w-[15rem] 2xl:w-[15rem]"/>
+        <img src={tech} alt="" className="w-[11rem] md:w-[15rem] xl:w-[15rem] lg:w-[15rem] 2xl:w-[15rem]"/>
+        <img src={data} alt="" className="w-[11rem] md:w-[15rem] xl:w-[15rem] lg:w-[15rem] 2xl:w-[15rem]"/>
+    </footer>
+    <Row gutter={24} className="md:w-[70%] flex justify-center">
       <Col xs={24} md={12}>
         <Form.Item
           label="First Name"
@@ -73,6 +78,7 @@ interface GuestState {
             type="text"
             onChange={(e) => handleInputChange("firstName", e.target.value)}
             value={localState.firstName}
+            className=""
           />
         </Form.Item>
       </Col>
@@ -160,7 +166,7 @@ interface GuestState {
       
       <Col xs={24} md={12}>
       <Form.Item
-        label="Residential Address"
+        label="Address"
         name="homeAddress"
         rules={[
           {
@@ -179,9 +185,7 @@ interface GuestState {
     </Row>
     </main>
     <footer className=" flex justify-center items-center gap-[.7rem] md:gap-[2rem] lg:gap-[2rem] xl:gap-[2rem] 2xl:gap-[2rem]">
-        <img src={stem} alt="" className="w-[11rem] md:w-[15rem] xl:w-[15rem] lg:w-[15rem] 2xl:w-[15rem]"/>
-        <img src={tech} alt="" className="w-[11rem] md:w-[15rem] xl:w-[15rem] lg:w-[15rem] 2xl:w-[15rem]"/>
-        <img src={data} alt="" className="w-[11rem] md:w-[15rem] xl:w-[15rem] lg:w-[15rem] 2xl:w-[15rem]"/>
+    
     </footer>
     </div>
   );
