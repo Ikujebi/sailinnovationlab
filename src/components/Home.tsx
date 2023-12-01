@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import {Link} from "react-router-dom"
 
 
 const Home: React.FC = () => {
@@ -164,14 +165,14 @@ const Home: React.FC = () => {
                 className=" ml-2 mt-[.44rem] w-4 h-3"
               />
             </p>
-            <p className=" text-black flex justify-center font-semibold  bg-[#DAA520]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white">
+            <Link to="/guest" className=" text-black flex justify-center font-semibold  bg-[#DAA520]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white">
               WANT TO VISIT ?{" "}
               <img
                 src={arrow}
                 alt="arrow"
                 className=" ml-2 mt-[.44rem] w-4 h-3 "
               />
-            </p>
+            </Link>
           </article>
         </section>
       </div>
