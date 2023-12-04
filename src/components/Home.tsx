@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import About from "./About";
 import Services from "./Services";
 import Achievement from "./Achievement";
+import Method from "./Method";
 
 const Home: React.FC = () => {
   const textRef = useRef<HTMLDivElement | null>(null);
@@ -214,6 +215,9 @@ const Home: React.FC = () => {
       </section>
       <section>
         <Achievement/>
+      </section>
+      <section>
+        <Method/>
       </section>
     </div>
   );
