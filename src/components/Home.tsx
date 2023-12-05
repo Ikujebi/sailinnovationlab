@@ -11,6 +11,8 @@ import About from "./About";
 import Services from "./Services";
 import Achievement from "./Achievement";
 import Method from "./Method";
+import Programs from "./Programs";
+import Testimonials from "./testimonials";
 
 const Home: React.FC = () => {
   const textRef = useRef<HTMLDivElement | null>(null);
@@ -218,6 +220,12 @@ const Home: React.FC = () => {
       </section>
       <section>
         <Method/>
+      </section>
+      <section className="">
+        <Programs/>
+      </section>
+      <section className="">
+        <Testimonials/>
       </section>
     </div>
   );
