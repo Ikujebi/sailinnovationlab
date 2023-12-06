@@ -1,10 +1,17 @@
+import { FC } from "react";
+import kite1 from '../images/rhombus (3).png'
+import kite2 from '../images/rhombus (1).png'
+import kite3 from '../images/rhombus (2).png'
+import kitespecial from '../images/kite1.png'
+import circle from '../images/top-view-yellow-circle-white-background-removebg-preview.png'
+
 interface CardData {
   image: number;
   title: string;
   content: string;
 }
 
-const Services: React.FC = () => {
+const Services: FC = () => {
   const cardData: CardData[] = [
     {
       image: 1,
@@ -44,6 +51,20 @@ const Services: React.FC = () => {
     },
   ];
 
+  const backgroundColors = [
+    "#48c4b4", // Coworking Space
+    "#2596be", // Incubation Programs
+    "#48c4b4", // Tech Trainings
+    "#184c94", // Social Programs
+    "#ffcc4c", // Events and Community
+    "#184c94", // Lifelong Learning
+  ];
+
+  const shapes =[
+    kite1,kitespecial,kite3,kite2,kite1,circle
+  ]
+console.log();
+
   return (
     <div>
       <div className="flex flex-col justify-center mt-[8rem]">
@@ -61,7 +82,15 @@ const Services: React.FC = () => {
           {cardData.map((card, index) => (
             <article key={index} className="flex flex-col h-full ">
               <div className="flex-grow border border-gray-300 p-4 rounded-xl ">
-                <div className="w-[5rem] h-[5rem] bg-blue-500 mb-4 mt-[2.5rem]"></div>
+                <div
+                  id="diagram"
+                  style={{ backgroundColor: backgroundColors[index] }}
+                  className="w-[5rem] h-[5rem] bg-blue-500 mb-4 mt-[2.5rem] "
+                >
+                  
+                    <img id={`shape-${index}`} src={shapes[index]} alt="" className="p-2  hover:rotate-180"/>
+                  
+                </div>
                 <h1 className="font-bold text-2xl leading-8 mb-2">
                   {card.title}
                 </h1>

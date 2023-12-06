@@ -13,6 +13,7 @@ import Achievement from "./Achievement";
 import Method from "./Method";
 import Programs from "./Programs";
 import Testimonials from "./testimonials";
+import Footer from "./Footer";
 
 const Home: React.FC = () => {
   const textRef = useRef<HTMLDivElement | null>(null);
@@ -119,7 +120,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="karla">
     <div className="flex ">
       <div className="bg-[#184c94] h-screen w-[49.9%]">
         <header>
@@ -226,6 +227,9 @@ const Home: React.FC = () => {
       </section>
       <section className="">
         <Testimonials/>
+      </section>
+      <section className="">
+        <Footer/>
       </section>
     </div>
   );
