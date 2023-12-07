@@ -30,13 +30,19 @@ const Guest: FC = () => {
   });
 
   const useFetchOptions = async (): Promise<any[]> => {
-    const formUrl = import.meta.env.VITE_APP_VITE_GUEST_FORM
+    const formUrl = import.meta.env.VITE_APP_VITE_GUEST_FORM;
+
+    if (!formUrl) {
+      console.error("Form URL is not defined.");
+      return [];
+    }
+  
     try {
       setLoading(true);
       const response: AxiosResponse<any> = await axios.post(
         formUrl
       );
-      return response.data.data;
+      return response.data;
     } catch (error) {
       console.error("Error fetching options:", error);
       return [];
