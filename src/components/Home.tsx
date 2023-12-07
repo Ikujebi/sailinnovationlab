@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState,FC } from "react";
 import logo from "../images/sail-logo-white-1-1.png";
 import arrow from "../images/arrow1-removebg-preview.png";
 import anime, { AnimeInstance } from "animejs";
@@ -15,7 +15,7 @@ import Programs from "./Programs";
 import Testimonials from "./testimonials";
 import Footer from "./Footer";
 
-const Home: React.FC = () => {
+const Home: FC = () => {
   const textRef = useRef<HTMLDivElement | null>(null);
 
   const pic1 =
@@ -137,7 +137,7 @@ const Home: React.FC = () => {
                 <span
                   id="ref"
                   ref={textRef}
-                  className="bg-[#5073A8] p-2 rounded-md"
+                  className="bg-[#5073A8] text-[#ffcc4c] p-2 rounded-md"
                 ></span>
               </h5>
               <h5>Thrives in Lagos East</h5>
