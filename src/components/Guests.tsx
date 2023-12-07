@@ -30,10 +30,11 @@ const Guest: FC = () => {
   });
 
   const useFetchOptions = async (): Promise<any[]> => {
+    const formUrl = import.meta.env.VITE_APP_VITE_GUEST_FORM
     try {
       setLoading(true);
       const response: AxiosResponse<any> = await axios.post(
-        import.meta.env.VITE_APP_VITE_GUEST_FORM
+        formUrl
       );
       return response.data.data;
     } catch (error) {
@@ -88,6 +89,7 @@ const Guest: FC = () => {
           />
         </footer>
         <Spin spinning={loading}>
+          <Form>
           <Row gutter={24} className="md:w-[70%] flex justify-center">
             <Col xs={24} md={12}>
               <Form.Item
@@ -240,6 +242,7 @@ const Guest: FC = () => {
               </Form.Item>
             </Col>
           </Row>
+          </Form>
         </Spin>
       </main>
       <footer className="mb-[1rem] flex justify-center items-center gap-[.7rem] md:gap-[2rem] lg:gap-[2rem] xl:gap-[2rem] 2xl:gap-[2rem]">
