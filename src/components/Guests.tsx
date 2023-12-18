@@ -16,6 +16,8 @@ interface GuestState {
   reasonForVisit: string;
 }
 
+
+
 const Guest: FC = () => {
   const [loading, setLoading] = useState(false);
   const [_locationOptions, setLocationOptions] = useState<any[]>([]); 
@@ -29,19 +31,23 @@ const Guest: FC = () => {
     reasonForVisit: "",
   });
 
-  const useFetchOptions = async (): Promise<any[]> => {
-    const formUrl = import.meta.env.VITE_APP_VITE_GUEST_FORM;
 
+  
+  const useFetchOptions = async (): Promise<any[]> => {
+    const formUrl = import.meta.env.VITE_GUEST_FORM;
+    console.log("Form URL:", formUrl);
     if (!formUrl) {
       console.error("Form URL is not defined.");
       return [];
     }
   
     try {
-      setLoading(true);
+      setLoading(false);
       const response: AxiosResponse<any> = await axios.post(
         formUrl
       );
+      console.log(formUrl);
+      
       return response.data;
     } catch (error) {
       console.error("Error fetching options:", error);
@@ -63,10 +69,25 @@ const Guest: FC = () => {
     setLocalState((prevState) => ({ ...prevState, [fieldName]: value }));
   };
 
-  const handleSubmit = () => {
-    message.success("Form submitted!");
-    console.log("Form submitted!");
+  const handleSubmit = async () => {
+    const formUrl = import.meta.env.VITE_GUEST_FORM;
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        formUrl, 
+        localState
+      );
+      console.log("Form submitted!", response.data);
+      message.success("Form submitted!");
+      Math.floor(Math.random() * 10)
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      message.error("Error submitting form. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <div className=" flex flex-col bg-blue-100 h-screen overflow-auto">
@@ -81,22 +102,22 @@ const Guest: FC = () => {
           <img
             src={stem}
             alt=""
-            className="w-[11rem] md:w-[15rem] xl:w-[15rem] lg:w-[15rem] 2xl:w-[15rem]"
+            className="w-[7rem] md:w-[15rem] xl:w-[15rem] lg:w-[15rem] 2xl:w-[15rem]"
           />
           <img
             src={tech}
             alt=""
-            className="w-[11rem] md:w-[15rem] xl:w-[15rem] lg:w-[15rem] 2xl:w-[15rem]"
+            className="w-[7rem] md:w-[15rem] xl:w-[15rem] lg:w-[15rem] 2xl:w-[15rem]"
           />
           <img
             src={data}
             alt=""
-            className="w-[11rem] md:w-[15rem] xl:w-[15rem] lg:w-[15rem] 2xl:w-[15rem]"
+            className="w-[7rem] md:w-[15rem] xl:w-[15rem] lg:w-[15rem] 2xl:w-[15rem]"
           />
         </footer>
         <Spin spinning={loading}>
-          <Form>
-          <Row gutter={24} className="md:w-[70%] flex justify-center">
+          <Form className="flex flex justify-center">
+          <Row gutter={24} className="md:w-[70%] flex justify-center px-8">
             <Col xs={24} md={12}>
               <Form.Item
                 label="First Name"

@@ -3,3 +3,7 @@ pic 2 = https://sailab.ng/wp-content/uploads/2023/10/Group-1000004124-1.png
 pic 3 = https://sailab.ng/wp-content/uploads/2023/10/Group-1000004133.png
 pic 4 = https://sailab.ng/wp-content/uploads/2023/10/Group-1000004132.png
 pic 5 = https://sailab.ng/wp-content/uploads/2023/10/Group-1000004131.png
+
+
+
+qr code = npm i react-qr-code
