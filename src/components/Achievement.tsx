@@ -1,6 +1,8 @@
+import {FC} from 'react'
 import achieve from '../images/achieve5.png'
 
-const Achievement = () => {
+
+const Achievement:FC = () => {
   return (
     <div className="md:mt-[10rem]  lg:mt-[10rem] xl:mt-[10rem] 2xl:mt-[10rem] mt-[60rem] ">
       <div className=" bg-black">

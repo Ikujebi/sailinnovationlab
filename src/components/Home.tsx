@@ -229,7 +229,7 @@ const Home: FC = () => {
       <section className="">
         <Testimonials/>
       </section>
-      <section className="">
+      <section className="lg:mt-[3rem] xl:mt-[15rem] 2xl:mt-[15rem]">
         <Footer/>
       </section>
     </div>
