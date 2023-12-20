@@ -1,5 +1,5 @@
-import { FC, useState, useEffect } from "react";
-import { useSpring, animated } from "react-spring";
+import { FC, useState, useEffect, useRef } from "react";
+import anime from "animejs";
 
 interface Program {
   program: string;
@@ -25,20 +25,36 @@ const OurProgramsNav: FC = () => {
   ];
 
   const [index, setIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const slideAnimation = useSpring({
-    opacity: 1,
-    transform: "translateX(0%)",
-    from: { opacity: 0, transform: "translateX(100%)" },
-  });
+  const animateSlide = () => {
+    if (containerRef.current) {
+      anime({
+        targets: containerRef.current,
+        translateX: -index * 100 + "%",
+        easing: "easeInOutQuad",
+        duration: 5000, // Adjust this value for the speed of each slide
+        complete: () => {
+          // Increment the index and reset to 0 if it exceeds the array length
+          setIndex((prevIndex) => (prevIndex + 1) % progs.length);
+
+          // Call animateSlide again after a delay (e.g., 5000 milliseconds)
+          setTimeout(animateSlide, 5000);
+        },
+      });
+    }
+  };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % progs.length);
-    }, 3000); 
+    // Start the initial animation when the component mounts
+    animateSlide();
 
-    return () => clearInterval(interval);
-  }, [progs.length]);
+    // Clear the animation interval when the component unmounts
+    return () => {
+      anime.remove(containerRef.current);
+    };
+  }, []);
+
 
   return (
     <div className="mt-[5rem] text-gray-800">
@@ -62,20 +78,22 @@ const OurProgramsNav: FC = () => {
                 arrow_left_alt
               </span>
             </div>
-            <animated.div
+            <div
+              ref={containerRef}
+              className="flex items-center text-[1.1rem] font-bold "
               style={{
-                ...slideAnimation,
                 flex: 1,
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 color: "white",
+                overflow: "hidden",
               }}
             >
               {progs.map((p, i) => (
-                i === index && <div key={i}>{p.program}</div>
+                i === index && <div key={i} className="hover:text-[#ffcc4a]">{p.program}</div>
               ))}
-            </animated.div>
+            </div>
             <div className="flex items-center ml-auto">
               <span className="bg-[#ffcc4a] rounded-[50%] text-white w-[2rem] mr-5 h-[2rem] flex justify-center items-center material-symbols-outlined text-white">
                 {" "}

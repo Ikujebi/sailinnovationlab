@@ -14,7 +14,7 @@ import Method from "./Method";
 import Programs from "./Programs";
 import Testimonials from "./testimonials";
 import Footer from "./Footer";
-import AboutNav from "./AboutNav";
+
 
 const Home: FC = () => {
   const textRef = useRef<HTMLDivElement | null>(null);
@@ -71,8 +71,8 @@ const Home: FC = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true, // Enable autoplay
-    autoplaySpeed: 5000, // Set autoplay interval to 5000 milliseconds (5 seconds)
+    autoplay: true, 
+    autoplaySpeed: 5000, 
   };
 
   useEffect(() => {
