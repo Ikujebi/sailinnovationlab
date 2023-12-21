@@ -71,7 +71,7 @@ const OurProgramsNav: FC = () => {
       </div>
       <main>
         <section>
-          <article className="bg-black h-[10svh] mx-[1rem] rounded-3xl mt-[1rem] flex">
+          <article className="bg-black h-[10svh] mx-[1rem] rounded-3xl mt-[1rem] flex hover:text-[#ffcc4a]">
             <div className="flex items-center">
               <span className="bg-[#ffcc4a] rounded-[50%] text-white w-[2rem] ml-5 h-[2rem] flex justify-center items-center material-symbols-outlined text-white">
                 {" "}
@@ -91,7 +91,7 @@ const OurProgramsNav: FC = () => {
               }}
             >
               {progs.map((p, i) => (
-                i === index && <div key={i} className="hover:text-[#ffcc4a]">{p.program}</div>
+                i === index && <div key={i} >{p.program}</div>
               ))}
             </div>
             <div className="flex items-center ml-auto">
