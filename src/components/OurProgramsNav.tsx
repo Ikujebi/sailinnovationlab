@@ -27,25 +27,34 @@ const OurProgramsNav: FC = () => {
   const [index, setIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const animateSlide = () => {
-    if (containerRef.current) {
-      anime({
-        targets: containerRef.current,
-        translateX: -index * 100 + "%",
-        easing: "easeInOutQuad",
-        duration: 5000, // Adjust this value for the speed of each slide
-        complete: () => {
-          // Increment the index and reset to 0 if it exceeds the array length
-          setIndex((prevIndex) => (prevIndex + 1) % progs.length);
-
-          // Call animateSlide again after a delay (e.g., 5000 milliseconds)
-          setTimeout(animateSlide, 5000);
-        },
-      });
-    }
-  };
-
   useEffect(() => {
+    const animateSlide = () => {
+      if (containerRef.current) {
+        const programContainer = containerRef.current;
+
+        // Slide out the current program to the left
+        anime({
+          targets: programContainer,
+          translateX: ["0%", "-100%"],
+          easing: "easeInOutQuad",
+          duration: 6000,
+          complete: () => {
+            // Increment the index and reset to 0 if it exceeds the array length
+            setIndex((prevIndex) => (prevIndex + 1) % progs.length);
+
+            // Update the content of the container
+            programContainer.innerText = progs[index].program;
+
+            // Reset the translation to 0 and animate the next slide after a delay
+            anime.set(programContainer, { translateX: "0%" });
+            setTimeout(() => {
+              animateSlide();
+            }, 4000); // Wait for 4 seconds
+          },
+        });
+      }
+    };
+
     // Start the initial animation when the component mounts
     animateSlide();
 
@@ -53,8 +62,7 @@ const OurProgramsNav: FC = () => {
     return () => {
       anime.remove(containerRef.current);
     };
-  }, []);
-
+  }, [index, progs]);
 
   return (
     <div className="mt-[5rem] text-gray-800">
@@ -80,19 +88,17 @@ const OurProgramsNav: FC = () => {
             </div>
             <div
               ref={containerRef}
-              className="flex items-center text-[1.1rem] font-bold "
+              className="flex items-left ml-auto text-[1.1rem] font-bold "
               style={{
                 flex: 1,
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: "right",
                 alignItems: "center",
                 color: "white",
                 overflow: "hidden",
               }}
             >
-              {progs.map((p, i) => (
-                i === index && <div key={i} >{p.program}</div>
-              ))}
+              {progs[index].program}
             </div>
             <div className="flex items-center ml-auto">
               <span className="bg-[#ffcc4a] rounded-[50%] text-white w-[2rem] mr-5 h-[2rem] flex justify-center items-center material-symbols-outlined text-white">

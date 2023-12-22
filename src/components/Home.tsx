@@ -176,7 +176,7 @@ const Home: FC = () => {
       <div className="white-bg w-[50%] mr-10">
         <nav className="mt-[2.5rem] w-[100%] flex gap-2 mr-4 md:gap-6 lg:gap-6 xl:gap-6 2xl:gap-6 justify-end md:font-normal lg:font-normal xl:font-normal 2xl:font-normal font-bold md:text-[1.15rem]  lg:text-[1.15rem]  xl:text-[1.15rem]  2xl:text-[1.15rem]  text-[.58rem]">
          <Link to={"/aboutNav"}> <p className=" ">About Us</p></Link>
-          <p>Our Programs</p>
+         <Link to={"/programNav"}> <p>Our Programs</p></Link>
           <p>Blog</p>
           <Link to={"/guest"}>
             <p>Visit</p>
