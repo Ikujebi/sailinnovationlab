@@ -5,6 +5,7 @@ import "./App.css";
 import "./index.css";
 import AboutNav from './components/AboutNav';
 import OurProgramsNav from './components/OurProgramsNav';
+import BlogNav from './components/BlogNav';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path='/guest' element={<Guests/>} />
       <Route path='/aboutNav' element={<AboutNav/>} />
       <Route path='/programNav' element={<OurProgramsNav/>} />
+      <Route path='/blognav' element={<BlogNav/>} />
 
     </Routes>
   );
