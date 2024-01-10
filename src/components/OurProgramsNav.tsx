@@ -2,6 +2,7 @@ import { FC, useState, useEffect, useRef } from "react";
 import anime from "animejs";
 import HeaderNav from "./HeaderNav";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 interface Program {
   program: string;
@@ -66,6 +67,8 @@ const OurProgramsNav: FC = () => {
   }, [index, progs]);
 
   const progAndInterestCard = "https://sailab.ng/wp-content/uploads/2023/10/Frame-18897.png"
+
+const registrationForm = "https://student-portal-form.vercel.app/"
 
   return (
     <div className="mt-[1.5rem] text-gray-800 karla">
@@ -134,7 +137,7 @@ const OurProgramsNav: FC = () => {
             </h6>
 
             <div id="white" className="bg-white h-[5rem] items-center hover:bg-[#184c94] font-normal whitespace-wrap hover:text-[white] text-[1.2rem] mt-[6rem] w-[11rem] flex  justify-center">
-              <p>Indicate Interest</p>
+              <Link to={registrationForm}><p>Indicate Interest</p></Link>
             </div>
           </article>
         </div>
