@@ -53,12 +53,12 @@ const BlogNav: FC = () => {
               />
              
             </div>
-            <p>Sailab <span className="w-[0.3rem] h-[2rem] bg-gray-400 "></span> September 1, 2022</p>
+            <p className="mt-3">Sailab <span className="border-l-2 border-gray-400 mr-1"></span> September 1, 2022</p>
           </article>
         </section>
       </main>
 
-      <footer>
+      <footer className="mt-[10rem]">
         <Footer />
       </footer>
     </div>

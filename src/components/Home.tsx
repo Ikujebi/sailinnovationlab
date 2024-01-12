@@ -233,7 +233,7 @@ const Home: FC = () => {
       <section className="">
         <Programs/>
       </section>
-      <section className="">
+      <section className="mt-[10rem]">
         <Testimonials/>
       </section>
       <section className="lg:mt-[3rem] xl:mt-[15rem] 2xl:mt-[15rem]">

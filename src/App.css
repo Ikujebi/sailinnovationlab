@@ -29,3 +29,8 @@
 .rubik{
   font-family: 'Rubik', sans-serif;
 }
+
+
+.svg-icon {
+  filter: invert(63%) sepia(41%) saturate(7537%) hue-rotate(191deg) brightness(2%) contrast(99%);
+}
