@@ -207,7 +207,7 @@ const Home: FC = () => {
                   <img
                     src={item.image}
                     alt="service"
-                    className="w-full  px-1 xl:w-[full] lg:w-[full] md:w-[full] mb-4 xl:h-[35rem] lg:h-[30rem] md:h-[27rem] h-[8rem]"
+                    className="w-full  px-[3rem] 2xl:px-[7rem] mb-4 xl:h-[40rem] 2xl:h-[40rem] lg:h-[30rem] md:h-[33rem] h-[8rem]"
                   />
                 </motion.div>
               ))}

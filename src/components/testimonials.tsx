@@ -22,21 +22,24 @@ const testimonials: FC = () => {
         id="testimonial"
         className="flex justify-center z-3 relative w-[19rem] md:w-[45rem] lg:w-[45rem] xl:w-[60rem] 2xl:w-[62rem] h-[11.5rem] md:h-[23rem] lg:h-[20rem] xl::h-[26rem] 2xl:h-[28rem] rounded-2xl mb-[3rem] mt-[-6rem]"
         style={{
-          background: `url(${testimonial1}) no-repeat center center fixed`,
+          background: `url(${testimonial1}) no-repeat center center `,
           backgroundSize: "cover",
         }}
       >
         <article className="flex justify-center flex-col mx-auto">
-          <header className=" rounded-2xl flex justify-center bg-[#48c4b4] text-white w-[10rem]">
-            Testimonials
+          
+          <header className="   text-white flex justify-center mt-[3rem]">
+          <div className=" rounded-2xl flex justify-center bg-[#48c4b4] text-white w-[10rem]">
+          Testimonials
+            </div> 
           </header>
 
-          <main>
+          <main className="text-[2.4rem] font-extrabold text-white mt-[3rem]">
             <p>Lagos East Teachers'</p>
             <p>Fellowship Testimonial</p>
           </main>
 
-          <Link to={testimonialYoutubeLink} className="mt-[2rem] flex justify-end mr-[-2rem] md:mr-[-8rem] xl:mr-[-20rem] 2xl:mr-[-20rem]">
+          <Link to={testimonialYoutubeLink} className="mt-[2rem] flex justify-end mr-[-2rem] md:mr-[-8rem] xl:mr-[-15rem] 2xl:mr-[-15rem]">
           <div className="bg-white h-[2rem] flex justify-center items-center rounded-[50%] w-[5rem] h-[5rem]">
             <div className="bg-white h-[2rem] flex justify-center shadow-md items-center rounded-[50%] w-[4rem] h-[4rem] outline outline-gray-100">
               <img src={play} alt="" className="svg-icon " />
