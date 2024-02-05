@@ -3,6 +3,7 @@ import anime from "animejs";
 import HeaderNav from "./HeaderNav";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
+import progAndInterestCard from "../images/Frame-18897.png"
 
 interface Program {
   program: string;
@@ -66,7 +67,7 @@ const OurProgramsNav: FC = () => {
     };
   }, [index, progs]);
 
-  const progAndInterestCard = "https://sailab.ng/wp-content/uploads/2023/10/Frame-18897.png"
+  
 
 const registrationForm = "https://student-portal-form.vercel.app/"
 
@@ -126,21 +127,17 @@ const registrationForm = "https://student-portal-form.vercel.app/"
           <h2>
           Our Programs
           </h2>
-        <div className="w-[16rem]"
-        
-        >
-          <img src={progAndInterestCard} alt="" className="w-[15rem] mt-6"/>
+          <div className="w-[16rem] relative">
+  <img src={progAndInterestCard} alt="" className="w-[19rem] h-[15rem] mt-[1rem]" />
 
-          <article className="mt-[-15rem] flex flex-col mx-[1.4rem] text-[1.3rem]">
-            <h6>
-            Program Duration:
-            </h6>
+  <article id="cardTxt" className="absolute inset-0 flex flex-col justify-center items-center text-[1.3rem]">
+    <h6>Program Duration:</h6>
 
-            <div id="white" className="bg-white h-[5rem] items-center hover:bg-[#184c94] font-normal whitespace-wrap hover:text-[white] text-[1.2rem] mt-[6rem] w-[11rem] flex  justify-center">
-              <Link to={registrationForm}><p>Indicate Interest</p></Link>
-            </div>
-          </article>
-        </div>
+    <div id="white" className="bg-white h-[5rem] items-center hover:bg-[#184c94] font-normal whitespace-wrap hover:text-[white] text-[1.2rem] mt-[6rem] w-[11rem] flex justify-center">
+      <Link to={registrationForm}><p>Indicate Interest</p></Link>
+    </div>
+  </article>
+</div>
         </section>
       </main>
       <div className="mt-[10rem]">

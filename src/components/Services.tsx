@@ -61,7 +61,7 @@ const Services: FC = () => {
   ];
 
   const shapes =[
-    kite1,kitespecial,kite3,kite2,kite1,circle
+    kitespecial,kitespecial,kitespecial,kite2,kite1,circle
   ]
 console.log();
 

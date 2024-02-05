@@ -1,5 +1,6 @@
 import { FC } from "react";
 import arrow from "../images/arrow1-removebg-preview.png";
+import { Link } from "react-router-dom";
 
 const AboutUsNav: FC = () => {
     const pik1 =
@@ -81,14 +82,14 @@ const AboutUsNav: FC = () => {
       <p className="flex justify-center">Explore the diverse programs and initiatives that make up SAIL Innovation</p>
       <p className="flex justify-center">Lab. Click below to learn more about how we’re shaping the future.</p>
       <div className="flex justify-center">
-      <p className="w-[40%] text-black flex justify-center font-semibold  bg-[#ffcc4c]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white">
+      <Link to={"/programNav"} className="w-[40%] text-black flex justify-center font-semibold  bg-[#ffcc4c]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white">
               OUR PROGRAMS{" "}
               <img
                 src={arrow}
                 alt="arrow"
                 className=" ml-2 mt-[.4rem] w-4 h-3"
               />
-            </p>
+            </Link>
       </div>
     </article>
           
