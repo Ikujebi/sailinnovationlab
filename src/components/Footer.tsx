@@ -3,7 +3,7 @@ import "../App.css";
 import FooterIcons from "./FooterIcons";
 const Footer: FC = () => {
   return (
-    <div className="h-[60svh]  bg-[#383434] rubik pt-[3rem]   ">
+    <div className="h-[60svh]  bg-[#383434] rubik pt-[3rem]  md:px-6 ">
       <section className="flex justify-center gap-[2rem] md:gap-[5rem]  xl:gap-[15rem] 2xl:gap-[15rem]">
         <article className="text-white  ">
           <div className="text-white flex ">

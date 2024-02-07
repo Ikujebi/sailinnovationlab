@@ -209,14 +209,14 @@ const OurProgramsNav: FC = () => {
           </div>
         </section>
 
-        <section>
-        <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <section >
+        <section className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-y-5 mt-[3rem] mx-auto 2xl:max-w-[75rem]  xl:max-w-[75rem] max-w-[50rem]">
           {progImages.map((image, index) => (
-            <div key={index} className="relative">
+            <div key={index} className="relative  mx-auto ">
               <img
                 src={image.src}
                 alt={image.alt}
-                className="w-full h-auto cursor-pointer "
+                className="w-[23.5rem] h-[15rem]   cursor-pointer "
                 onClick={() => handleImageClick(image)}
               />
             </div>

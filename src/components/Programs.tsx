@@ -1,5 +1,6 @@
 import { Card } from "antd";
 import { FC } from "react";
+import { Link } from "react-router-dom";
 
 interface CustomCardProps {
   image: string;
@@ -14,6 +15,7 @@ const CustomCard: FC<CustomCardProps> = ({ image, title, details }) => (
     cover={<img alt={title} src={image} />}
   >
     <Card.Meta title={title} description={details} />
+     <Link to={"/programNav"}><button className="flex content-around bg-gray-200 py-2 px-10 hover:bg-[#184c94] hover:text-white mt-4">Learn More</button></Link>
   </Card>
 );
 
