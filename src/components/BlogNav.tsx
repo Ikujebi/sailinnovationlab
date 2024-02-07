@@ -3,6 +3,34 @@ import HeaderNav from "./HeaderNav";
 import Footer from "./Footer";
 
 const BlogNav: FC = () => {
+
+  interface blogger1 {
+    blogTitle: String;
+    blogDiscussion: String;
+  }
+
+  interface blogger {
+
+    src: string;
+    alt: string;
+    blogTitle: String;
+    blogDiscussion: String;
+  }
+
+  const techBloggers : blogger[] =[
+    {
+     src: "https://sailab.ng/wp-content/uploads/2024/01/SAIL-Imapact-Story-Web-Azeezat-1024x563.jpg",
+      alt: "Image 1",
+      blogTitle:"Finding My Path in Data Science Featuring Adetola, Azeezat Adeola",
+      blogDiscussion: "After graduating from the University of Lagos with a degree in cell biology and genetics, I was anxious about my next steps."
+    }, 
+    {
+     src: "https://sailab.ng/wp-content/uploads/2023/10/Photo.png",
+      alt: "Image 1",
+      blogTitle:"SAIL Innovation Lab to drive youth Empowerment",
+      blogDiscussion: "SAIL Innovation Lab partnered with Co-creation Hub to develop a Community Innovation Space for young people in Lagos East Senatorial District."
+    }, 
+  ]
   const readingBoy = "https://sailab.ng/wp-content/uploads/2023/10/Photo.png";
   const circle = "https://sailab.ng/wp-content/uploads/2023/10/Image-16.png";
   return (
@@ -23,22 +51,22 @@ const BlogNav: FC = () => {
             Updates From the Lab
           </article>
         </section>
-        <section className="ml-[2rem] mt-[2rem] w-[27rem]">
-          <article>
+        <section className="flex">
+          {techBloggers.map((item,i)=>(
+            <section className="ml-[2rem] mt-[2rem] w-[27rem]">
+            <article>
             <img
-              src={readingBoy}
-              alt=""
+              src={item.src}
+              alt={item.alt}
               className="rounded-xl w-[24rem] ml-5"
             />
           </article>
           <article className="my-[2rem]">
             <h5 className="text-[1.65rem] font-bold mb-3">
-              SAIL Innovation Lab to drive youth Empowerment
+          {item.blogTitle}
             </h5>
             <p>
-              SAIL Innovation Lab partnered with Co-creation Hub to develop a
-              Community Innovation Space for young people in Lagos East
-              Senatorial District.
+              {item.blogDiscussion}
             </p>
           </article>
           <article className="mb-5 flex gap-3">
@@ -55,6 +83,9 @@ const BlogNav: FC = () => {
             </div>
             <p className="mt-3">Sailab <span className="border-l-2 border-gray-400 mr-1"></span> September 1, 2022</p>
           </article>
+          </section>
+          ))}
+          
         </section>
       </main>
 
