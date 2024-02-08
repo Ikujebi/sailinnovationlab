@@ -31,7 +31,7 @@ const BlogNav: FC = () => {
       blogDiscussion: "SAIL Innovation Lab partnered with Co-creation Hub to develop a Community Innovation Space for young people in Lagos East Senatorial District."
     }, 
   ]
-  const readingBoy = "https://sailab.ng/wp-content/uploads/2023/10/Photo.png";
+  
   const circle = "https://sailab.ng/wp-content/uploads/2023/10/Image-16.png";
   return (
     <div>
@@ -51,8 +51,8 @@ const BlogNav: FC = () => {
             Updates From the Lab
           </article>
         </section>
-        <section className="flex">
-          {techBloggers.map((item,i)=>(
+        <section className="flex justify-center">
+          {techBloggers.map((item,_i)=>(
             <section className="ml-[2rem] mt-[2rem] w-[27rem]">
             <article>
             <img

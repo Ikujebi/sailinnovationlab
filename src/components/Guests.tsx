@@ -29,7 +29,12 @@ const Guest: FC = () => {
     sex: "",
     address: "",
     reasonForVisit: "",
+
   });
+
+  const guestCode = "https://ssmp-api.onrender.com/api/v1/visit/getVisitorqrCode"
+
+
 
 
   
