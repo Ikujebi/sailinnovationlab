@@ -6,6 +6,7 @@ import "./index.css";
 import AboutNav from './components/AboutNav';
 import OurProgramsNav from './components/OurProgramsNav';
 import BlogNav from './components/BlogNav';
+import IndividualBlog1 from './components/IndividualBlog';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path='/aboutNav' element={<AboutNav/>} />
       <Route path='/programNav' element={<OurProgramsNav/>} />
       <Route path='/blognav' element={<BlogNav/>} />
+      <Route path='/individualBlog' element={<IndividualBlog1/>} />
 
     </Routes>
   );

@@ -1,13 +1,11 @@
 import { FC } from "react";
 import HeaderNav from "./HeaderNav";
 import Footer from "./Footer";
+import {Link} from "react-router-dom"
 
 const BlogNav: FC = () => {
 
-  interface blogger1 {
-    blogTitle: String;
-    blogDiscussion: String;
-  }
+  
 
   interface blogger {
 
@@ -71,7 +69,7 @@ const BlogNav: FC = () => {
           </article>
           <article className="mb-5 flex gap-3">
             <button className="hover:text-white hover:bg-[#184c94] p-2 border-2 border-black hover:border-0 hover:p-3">
-              Read More
+             <Link to={'/individualBlog'}>Read More</Link> Read More
             </button>
             <div>
               <img

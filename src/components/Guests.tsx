@@ -1,12 +1,13 @@
 import { useState, useEffect, FC } from "react";
 import axios, { AxiosResponse } from "axios";
-import { Col, Form, Input, Row, Select, message, Spin } from "antd";
+import { Col, Form, Input, Row, Select, message, Spin, Modal  } from "antd";
 import logo from "../images/sail_logo-removebg-preview.png";
 import stem from "../images/stem.jpg";
 import tech from "../images/tech talent.png";
 import data from "../images/datascience.png";
 
 interface GuestState {
+  id : string;
   firstName: string;
   lastName: string;
   phoneNumber: string;
@@ -20,8 +21,11 @@ interface GuestState {
 
 const Guest: FC = () => {
   const [loading, setLoading] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [imageURL, setImageURL] = useState<string>('');
   const [_locationOptions, setLocationOptions] = useState<any[]>([]); 
   const [localState, setLocalState] = useState<GuestState>({
+    id: '', 
     firstName: "",
     lastName: "",
     phoneNumber: "",
@@ -85,9 +89,27 @@ const Guest: FC = () => {
       console.log("Form submitted!", response.data);
       message.success("Form submitted!");
       Math.floor(Math.random() * 10)
-    } catch (error) {
+
+      const { id } = response.data;
+      setLocalState(prevState => ({ ...prevState, id }));
+
+      const imageUrlResponse = await axios.get(guestCode);
+      const imageUrl = imageUrlResponse.data.imageUrl;
+      setImageURL(imageUrl);
+      setModalVisible(true);
+    } catch (error: any) {
       console.error("Error submitting form:", error);
-      message.error("Error submitting form. Please try again.");
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        const { status, data } = error.response;
+        message.error(`Server error: ${status} - ${data.message}`);
+      } else if (error.request) {
+        // The request was made but no response was received
+        message.error("Network error: No response received from the server.");
+      } else {
+        // Something happened in setting up the request that triggered an error
+        message.error("An unexpected error occurred. Please try again later.");
+      }
     } finally {
       setLoading(false);
     }
@@ -285,6 +307,15 @@ const Guest: FC = () => {
           Submit
         </button>
       </footer>
+
+      <Modal
+        title="QR Code"
+        open={modalVisible}
+        onCancel={() => setModalVisible(false)}
+        footer={null}
+      >
+        <img src={imageURL} alt="QR Code" style={{ maxWidth: "100%" }} />
+      </Modal>
     </div>
   );
 };
