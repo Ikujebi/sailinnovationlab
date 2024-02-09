@@ -8,7 +8,7 @@ const BlogNav: FC = () => {
   
 
   interface blogger {
-
+    id: number;
     src: string;
     alt: string;
     blogTitle: String;
@@ -16,13 +16,13 @@ const BlogNav: FC = () => {
   }
 
   const techBloggers : blogger[] =[
-    {
+    {id:1,
      src: "https://sailab.ng/wp-content/uploads/2024/01/SAIL-Imapact-Story-Web-Azeezat-1024x563.jpg",
       alt: "Image 1",
       blogTitle:"Finding My Path in Data Science Featuring Adetola, Azeezat Adeola",
       blogDiscussion: "After graduating from the University of Lagos with a degree in cell biology and genetics, I was anxious about my next steps."
     }, 
-    {
+    {id:2,
      src: "https://sailab.ng/wp-content/uploads/2023/10/Photo.png",
       alt: "Image 1",
       blogTitle:"SAIL Innovation Lab to drive youth Empowerment",
@@ -50,8 +50,8 @@ const BlogNav: FC = () => {
           </article>
         </section>
         <section className="flex justify-center">
-          {techBloggers.map((item,_i)=>(
-            <section className="ml-[2rem] mt-[2rem] w-[27rem]">
+          {techBloggers.map((item,i)=>(
+            <section className="ml-[2rem] mt-[2rem] w-[27rem]" key={i}>
             <article>
             <img
               src={item.src}
@@ -68,9 +68,9 @@ const BlogNav: FC = () => {
             </p>
           </article>
           <article className="mb-5 flex gap-3">
-            <button className="hover:text-white hover:bg-[#184c94] p-2 border-2 border-black hover:border-0 hover:p-3">
-             <Link to={'/individualBlog'}>Read More</Link> Read More
-            </button>
+            <Link to={'/individualBlog'} className="hover:text-white hover:bg-[#184c94] p-2 border-2 border-black hover:border-0 hover:p-3">
+             Read More 
+            </Link>
             <div>
               <img
                 src={circle}

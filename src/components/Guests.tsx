@@ -7,7 +7,7 @@ import tech from "../images/tech talent.png";
 import data from "../images/datascience.png";
 
 interface GuestState {
-  id : string;
+
   firstName: string;
   lastName: string;
   phoneNumber: string;
@@ -25,7 +25,7 @@ const Guest: FC = () => {
   const [imageURL, setImageURL] = useState<string>('');
   const [_locationOptions, setLocationOptions] = useState<any[]>([]); 
   const [localState, setLocalState] = useState<GuestState>({
-    id: '', 
+     
     firstName: "",
     lastName: "",
     phoneNumber: "",
@@ -35,8 +35,8 @@ const Guest: FC = () => {
     reasonForVisit: "",
 
   });
-
-  const guestCode = "https://ssmp-api.onrender.com/api/v1/visit/getVisitorqrCode"
+  const [_identifier, setidentifier] = useState<string>("");
+  // const guestCode = "https://ssmp-api.onrender.com/api/v1/visit/getVisitorqrCode"
 
 
 
@@ -82,27 +82,41 @@ const Guest: FC = () => {
     const formUrl = import.meta.env.VITE_GUEST_FORM;
     try {
       setLoading(true);
+      console.log("Data being sent:", localState);
       const response = await axios.post(
         formUrl, 
         localState
       );
       console.log("Form submitted!", response.data);
+      if (response.data.error === "email_exists") {
+        message.error("Email already exists")
+        throw new Error("Email already exists");
+      }
       message.success("Form submitted!");
       Math.floor(Math.random() * 10)
 
-      const { id } = response.data;
-      setLocalState(prevState => ({ ...prevState, id }));
+      const identifierResponse = await axios.get(import.meta.env.VITE_GUEST_Code);
+    const identifier = identifierResponse.data.id;
 
-      const imageUrlResponse = await axios.get(guestCode);
-      const imageUrl = imageUrlResponse.data.imageUrl;
-      setImageURL(imageUrl);
+    // Set the identifier in the state
+    setidentifier(identifier);
+
+    // Make a request to fetch the QR code using the identifier
+    const qrCodeResponse = await axios.get(`${import.meta.env.VITE_GUEST_Code}?identifier=${identifier}`);
+    const qrCodeImageUrl = qrCodeResponse.data.imageUrl;
+
+    setImageURL(qrCodeImageUrl);
       setModalVisible(true);
     } catch (error: any) {
       console.error("Error submitting form:", error);
       if (error.response) {
         // The request was made and the server responded with a status code
         const { status, data } = error.response;
-        message.error(`Server error: ${status} - ${data.message}`);
+        if (status === 400 && data.error === "email_exists") {
+          message.error("Email already exists");
+        } else {
+          message.error(`Server error: ${status} - ${data.message}`);
+        }
       } else if (error.request) {
         // The request was made but no response was received
         message.error("Network error: No response received from the server.");
