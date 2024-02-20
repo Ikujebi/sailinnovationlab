@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 
 const BlogNav: FC = () => {
 
-  
+  const isIndividualBlogPage = true;
 
   interface blogger {
     id: number;
@@ -13,6 +13,7 @@ const BlogNav: FC = () => {
     alt: string;
     blogTitle: String;
     blogDiscussion: String;
+    blog : string ;
   }
 
   const techBloggers : blogger[] =[
@@ -20,13 +21,15 @@ const BlogNav: FC = () => {
      src: "https://sailab.ng/wp-content/uploads/2024/01/SAIL-Imapact-Story-Web-Azeezat-1024x563.jpg",
       alt: "Image 1",
       blogTitle:"Finding My Path in Data Science Featuring Adetola, Azeezat Adeola",
-      blogDiscussion: "After graduating from the University of Lagos with a degree in cell biology and genetics, I was anxious about my next steps."
+      blogDiscussion: "After graduating from the University of Lagos with a degree in cell biology and genetics, I was anxious about my next steps.",
+      blog: "/individualBlog"
     }, 
     {id:2,
      src: "https://sailab.ng/wp-content/uploads/2023/10/Photo.png",
       alt: "Image 1",
       blogTitle:"SAIL Innovation Lab to drive youth Empowerment",
-      blogDiscussion: "SAIL Innovation Lab partnered with Co-creation Hub to develop a Community Innovation Space for young people in Lagos East Senatorial District."
+      blogDiscussion: "SAIL Innovation Lab partnered with Co-creation Hub to develop a Community Innovation Space for young people in Lagos East Senatorial District.",
+      blog: "/individualBlog2"
     }, 
   ]
   
@@ -34,7 +37,7 @@ const BlogNav: FC = () => {
   return (
     <div>
       <header>
-        <HeaderNav />
+        <HeaderNav margin={!isIndividualBlogPage} />
       </header>
 
       <main>
@@ -68,7 +71,7 @@ const BlogNav: FC = () => {
             </p>
           </article>
           <article className="mb-5 flex gap-3">
-            <Link to={'/individualBlog'} className="hover:text-white hover:bg-[#184c94] p-2 border-2 border-black hover:border-0 hover:p-3">
+            <Link to={item.blog} className="hover:text-white hover:bg-[#184c94] p-2 border-2 border-black hover:border-0 hover:p-3">
              Read More 
             </Link>
             <div>

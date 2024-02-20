@@ -1,8 +1,10 @@
 import {FC} from 'react'
 import { Link } from "react-router-dom";
+interface HeaderNavProps {
+  margin: boolean;
+}
 
-
-const HeaderNav:FC = () => {
+const HeaderNav: FC<HeaderNavProps> = ({ margin }) => {
   const navigationLinks = [
     { to: "/aboutNav", label: "About Us" },
     { to: "/programNav", label: "Our Programs" },
@@ -12,7 +14,8 @@ const HeaderNav:FC = () => {
     const headerpix =
     "https://sailab.ng/wp-content/uploads/2023/10/cropped-SAIL-Logo-228x67-1.png";
   return (
-    <div className="flex mx-[1rem] xl:mx-[2rem] 2xl:mx-[15rem] mt-[2rem]">
+    <div className={margin? 'mt-[2rem]' : 'mt-0'}>
+    <div className="flex mx-[1rem] xl:mx-[2rem] 2xl:mx-[15rem] ">
         <header>
           <img src={headerpix} alt="" className="w-[16rem]"/>
         </header>
@@ -22,7 +25,7 @@ const HeaderNav:FC = () => {
          ))}
        
         </nav>
-      </div>
+      </div></div>
   )
 }
 

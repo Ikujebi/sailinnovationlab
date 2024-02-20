@@ -7,6 +7,7 @@ import AboutNav from './components/AboutNav';
 import OurProgramsNav from './components/OurProgramsNav';
 import BlogNav from './components/BlogNav';
 import IndividualBlog1 from './components/IndividualBlog';
+import IndividualBlog2 from './components/individualBlog2'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path='/programNav' element={<OurProgramsNav/>} />
       <Route path='/blognav' element={<BlogNav/>} />
       <Route path='/individualBlog' element={<IndividualBlog1/>} />
+      <Route path='/individualBlog2' element={<IndividualBlog2/>} />
 
     </Routes>
   );
