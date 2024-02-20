@@ -9,7 +9,7 @@ const AboutNav: FC = () => {
 
   return (
     <div className=" karla">
-      <HeaderNav />
+      <HeaderNav margin/>
       <AboutUsNav />
       <Footer />
     </div>
