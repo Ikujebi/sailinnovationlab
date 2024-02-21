@@ -14,6 +14,7 @@ import Method from "./Method";
 import Programs from "./Programs";
 import Testimonials from "./testimonials";
 import Footer from "./Footer";
+import HeaderNav from "./HeaderNav";
 
 
 const Home: FC = () => {
@@ -120,12 +121,7 @@ const Home: FC = () => {
     };
   }, []);
 
-  const navigationLinks = [
-    { to: "/aboutNav", label: "About Us" },
-    { to: "/programNav", label: "Our Programs" },
-    { to: "/blognav", label: "Blog" },
-    { to: "/guest", label: "Visit" },
-  ];
+ 
 
   return (
     <div className="karla">
@@ -180,15 +176,8 @@ const Home: FC = () => {
           </article>
         </section>
       </div>
-      <div className="white-bg w-[50%] mr-10">
-        <nav className="mt-[2.5rem] w-[100%] flex gap-2 mr-4 md:gap-6 lg:gap-6 xl:gap-6 2xl:gap-6 justify-end md:font-normal lg:font-normal xl:font-normal 2xl:font-normal font-bold md:text-[1.15rem]  lg:text-[1.15rem]  xl:text-[1.15rem]  2xl:text-[1.15rem]  text-[.58rem]">
-         {navigationLinks.map((link,index)=>(
-          <Link key={index} to={link.to}>
-            <p className="hover:underline decoration-2 underline-offset-8">{link.label}</p>
-          </Link>
-         ))}
-        
-        </nav>
+      <div className="white-bg w-[50%] mr-10 ">
+        <HeaderNav margin/>
         <div
           id="services"
           className="flex justify-center align-center px-2 mt-[7rem]"

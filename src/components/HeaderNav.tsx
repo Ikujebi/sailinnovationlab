@@ -9,8 +9,8 @@ const HeaderNav: FC<HeaderNavProps> = ({ margin }) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const navigationLinks = [
-    { to: "/aboutNav", label: "About Us" },
-    { to: "/programNav", label: "Our Programs" },
+    { to: "/aboutNav", label: "About " },
+    { to: "/programNav", label: " Programs" },
     { to: "/blognav", label: "Blog" },
     
   ];

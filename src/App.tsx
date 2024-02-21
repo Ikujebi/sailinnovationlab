@@ -9,11 +9,13 @@ import BlogNav from './components/BlogNav';
 import IndividualBlog1 from './components/IndividualBlog';
 import IndividualBlog2 from './components/individualBlog2'
 import Facility from './components/Facility';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Signin from './Facility/Pages/Signin/Sigin'
 
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Home/>} />
+      <Route path='/' element={<Home />} />
       <Route path='/guest' element={<Guests/>} />
       <Route path='/aboutNav' element={<AboutNav/>} />
       <Route path='/programNav' element={<OurProgramsNav/>} />
@@ -21,6 +23,7 @@ function App() {
       <Route path='/individualBlog' element={<IndividualBlog1/>} />
       <Route path='/individualBlog2' element={<IndividualBlog2/>} />
       <Route path='/facility' element={<Facility/>} />
+      <Route path='/signin' element={<Signin/>} />
 
     </Routes>
   );
