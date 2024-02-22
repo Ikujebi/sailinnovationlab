@@ -1,10 +1,22 @@
 import { useEffect, useCallback, useState } from "react";
 import { BASE_URL } from "../constants/baseUrl";
 
-const useGetUserInfo = (endpoint) => {
-  const [userInfo, setUserInfo] = useState([]);
+interface UserInfo {
+  // Define the structure of your user info here
+  // For example:
+  id: number;
+  name: string;
+  // ... other properties
+}
+
+interface UseGetUserInfoProps {
+  endpoint: string;
+}
+
+const useGetUserInfo = ({ endpoint }: UseGetUserInfoProps) => {
+  const [userInfo, setUserInfo] = useState<UserInfo[]>([]);
   const token = localStorage.getItem("token");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const getUserInfo = useCallback(async () => {
     setLoading(true);
@@ -29,6 +41,7 @@ const useGetUserInfo = (endpoint) => {
   useEffect(() => {
     getUserInfo();
   }, [getUserInfo]);
+
   return { userInfo, loading };
 };
 
