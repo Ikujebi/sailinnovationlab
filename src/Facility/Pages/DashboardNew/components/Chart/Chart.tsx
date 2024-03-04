@@ -1,8 +1,8 @@
 import { FC, useState, useEffect, useCallback } from 'react';
 
-import { Pie } from "@ant-design/plots";
+import { Pie } from "@ant-design/charts";
 
-import useGetParticipantInfo from '../../../../../hooks/useGetParticipants'; // Assuming correct path
+import useGetParticipantInfo from '../../../../../hooks/useGetParticipants'; 
 
 
 
@@ -36,11 +36,11 @@ const Chart: FC = () => {
 
 
 
-    const present = participantsInfo.filter((participant: Participant) => participant.clockInStatus);
+    const present = participantsInfo?.filter((participant: Participant) => participant.clockInStatus);
 
-    const absent = participantsInfo.filter((participant: Participant) => !participant.clockInStatus);
+    const absent = participantsInfo?.filter((participant: Participant) => !participant.clockInStatus);
 
-    const clockOuts = participantsInfo.filter((participant: Participant) => participant.clockInStatus === false);
+    const clockOuts = participantsInfo?.filter((participant: Participant) => participant.clockInStatus === false);
 
 
 
@@ -50,7 +50,7 @@ const Chart: FC = () => {
 
         type: "Total Present Participants",
 
-        value: present.length,
+        value: present?.length,
 
       },
 
@@ -58,7 +58,7 @@ const Chart: FC = () => {
 
         type: "Total Absent Participants",
 
-        value: absent.length,
+        value: absent?.length,
 
       },
 
@@ -66,7 +66,7 @@ const Chart: FC = () => {
 
         type: "Total Clocked-Out Participants",
 
-        value: clockOuts.length,
+        value: clockOuts?.length,
 
       },
 
@@ -83,6 +83,7 @@ const Chart: FC = () => {
   }, [getChartData]);
 
 
+console.log(data);
 
   // Remove unnecessary console.log
 
@@ -92,7 +93,7 @@ const Chart: FC = () => {
 
     appendPadding: 10,
 
-    data: data,
+    data,
 
     angleField: "value",
 

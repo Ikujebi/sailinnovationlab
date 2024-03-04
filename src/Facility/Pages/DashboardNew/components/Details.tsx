@@ -83,10 +83,8 @@ console.log("Filtered ClockOut Participants:", clockOuts);
       <div>
         <div className="flex flex-wrap lg:flex-nowrap gap-[2rem] md:gap-[4rem] pl-4">
           <RecentClockIn participantsInfo={present} />
-          <div>
-
-          </div>
-        
+          
+        <Chart />
         </div>
       </div>
     </div>
