@@ -2,11 +2,16 @@ import { useEffect, useCallback, useState } from "react";
 import { BASE_URL } from "../constants/baseUrl";
 
 type ParticipantInfo = {
-  // Define the shape of your participant info object
-  // For example:
-  id: number;
-  name: string;
-  // ... other properties
+  
+  id?: number;
+  firstName: string;
+  email: string;
+  lastName: string;
+  programme: string;
+  clockInDate: string | null;
+  clockOutDate: string | null;
+  clockInStatus: boolean;
+  approvalStatus: string | null;
 };
 
 const useGetParticipantInfo = () => {

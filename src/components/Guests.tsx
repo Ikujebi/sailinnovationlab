@@ -35,7 +35,7 @@ const Guest: FC = () => {
     reasonForVisit: "",
 
   });
-  const [_identifier, setidentifier] = useState<string>("");
+  // const [_identifier, setidentifier] = useState<string>("");
   // const guestCode = "https://ssmp-api.onrender.com/api/v1/visit/getVisitorqrCode"
 
 
@@ -82,30 +82,28 @@ const Guest: FC = () => {
     const formUrl = import.meta.env.VITE_GUEST_FORM;
     try {
       setLoading(true);
-      console.log("Data being sent:", localState);
-      const response = await axios.post(
-        formUrl, 
-        localState
-      );
-      console.log("Form submitted!", response.data);
-      if (response.data.error === "email_exists") {
-        message.error("Email already exists")
-        throw new Error("Email already exists");
+      if (!localState.sex) {
+        throw new Error("Please select a gender.");
       }
+      console.log("Data being sent:", localState);
+      const response = await axios.post(formUrl, localState);
+      console.log("Form submitted!", response.data);
+      
+      // Displaying the response data
       message.success("Form submitted!");
-      Math.floor(Math.random() * 10)
-
-      const identifierResponse = await axios.get(import.meta.env.VITE_GUEST_Code);
-    const identifier = identifierResponse.data.id;
-
-    // Set the identifier in the state
-    setidentifier(identifier);
-
-    // Make a request to fetch the QR code using the identifier
-    const qrCodeResponse = await axios.get(`${import.meta.env.VITE_GUEST_Code}?identifier=${identifier}`);
-    const qrCodeImageUrl = qrCodeResponse.data.imageUrl;
-
-    setImageURL(qrCodeImageUrl);
+      console.log("Response:", response.data);
+  
+      // If the response contains an identifier and image URL, you can set them in state
+      const Identifier = response.data.user.visitor._id
+      console.log(Identifier);
+      
+      const userQR = import.meta.env.VITE_GUEST_Code
+      const qrCode = await axios.get(userQR,{ params: { id: Identifier } })
+      const {  imageUrl } = qrCode.data;
+      //  setIdentifier(id);
+       setImageURL(imageUrl);
+  
+      // Just showing the modal for now
       setModalVisible(true);
     } catch (error: any) {
       console.error("Error submitting form:", error);

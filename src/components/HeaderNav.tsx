@@ -57,7 +57,7 @@ const HeaderNav: FC<HeaderNavProps> = ({ margin }) => {
             {isDropdownOpen && (
               <div className="absolute mr-[1rem] top-full left-0 bg-white shadow-md rounded-md mt-1 z-10">
                 <Link to="/guest" className="block px-4 py-2 hover:bg-gray-100" onClick={closeDropdown}>Visit</Link>
-                <Link to="/facility" className="block px-4 py-2 hover:bg-gray-100" onClick={closeDropdown}>Facility</Link>
+                <Link to="/signin" className="block px-4 py-2 hover:bg-gray-100" onClick={closeDropdown}>Facility</Link>
               </div>
             )}
           </div>

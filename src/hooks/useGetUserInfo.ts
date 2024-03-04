@@ -2,19 +2,25 @@ import { useEffect, useCallback, useState } from "react";
 import { BASE_URL } from "../constants/baseUrl";
 
 interface UserInfo {
-  // Define the structure of your user info here
-  // For example:
-  id: number;
-  name: string;
-  // ... other properties
+  id?: number;
+  firstName: string;
+  email: string;
+  lastName: string;
+  role: string;
+  lga: string;
+  programme: string;
+  sex: string;
+  techStack: string;
+  occupation: string;
 }
 
 interface UseGetUserInfoProps {
   endpoint: string;
 }
 
-const useGetUserInfo = ({ endpoint }: UseGetUserInfoProps) => {
-  const [userInfo, setUserInfo] = useState<UserInfo[]>([]);
+const useGetUserInfo = (props: UseGetUserInfoProps) => {
+  const { endpoint } = props;
+  const [userInfo, setUserInfo] = useState<UserInfo>();
   const token = localStorage.getItem("token");
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -29,7 +35,7 @@ const useGetUserInfo = ({ endpoint }: UseGetUserInfoProps) => {
         },
       });
       const response = await request.json();
-      // console.log(response.data);
+      console.log("profile!!!",response.data);
       setUserInfo(response.data);
       setLoading(false);
     } catch (error) {
