@@ -1,147 +1,70 @@
-import { FC, useState, useEffect, useCallback } from 'react';
-
-import { Pie } from "@ant-design/charts";
-
-import useGetParticipantInfo from '../../../../../hooks/useGetParticipants'; 
-
-
+import React, { FC, useState, useEffect, useCallback } from 'react';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, LabelList } from 'recharts';
+import useGetParticipantInfo from '../../../../../hooks/useGetParticipants';
 
 interface Participant {
-
   clockInStatus: boolean;
-
 }
 
-
-
 const Chart: FC = () => {
-
-  const [data, setData] = useState<{ type: string; value: number | undefined }[]>([]);
-
-
-
+  const [data, setData] = useState<{ name: string; value: number }[]>([]);
   const { participantsInfo } = useGetParticipantInfo();
 
-
+  // Define static colors
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
 
   const getChartData = useCallback(() => {
-
     if (!participantsInfo) {
-
-      // Handle cases where participantsInfo is initially undefined or null
-
       return;
-
     }
 
-
-
-    const present = participantsInfo?.filter((participant: Participant) => participant.clockInStatus);
-
-    const absent = participantsInfo?.filter((participant: Participant) => !participant.clockInStatus);
-
-    const clockOuts = participantsInfo?.filter((participant: Participant) => participant.clockInStatus === false);
-
-
+    const present = participantsInfo.filter((participant: Participant) => participant.clockInStatus);
+    const absent = participantsInfo.filter((participant: Participant) => !participant.clockInStatus);
+    const clockOuts = participantsInfo.filter((participant: Participant) => !participant.clockInStatus);
 
     setData([
-
-      {
-
-        type: "Total Present Participants",
-
-        value: present?.length,
-
-      },
-
-      {
-
-        type: "Total Absent Participants",
-
-        value: absent?.length,
-
-      },
-
-      {
-
-        type: "Total Clocked-Out Participants",
-
-        value: clockOuts?.length,
-
-      },
-
+      { name: 'Total Present Participants', value: present.length },
+      { name: 'Total Absent Participants', value: absent.length },
+      { name: 'Total Clocked-Out Participants', value: clockOuts.length },
     ]);
-
   }, [participantsInfo]);
 
-
-
   useEffect(() => {
-
     getChartData();
-
   }, [getChartData]);
 
-
-console.log(data);
-
-  // Remove unnecessary console.log
-
-
-
-  const config = {
-
-    appendPadding: 10,
-
-    data,
-
-    angleField: "value",
-
-    colorField: "type",
-
-    radius: 0.8,
-
-    label: {
-
-      type: "inner",
-
-      offset: "-10%",
-
-      content: "{percentage}",
-
-    },
-
-    interactions: [
-
-      {
-
-        type: "element-active",
-
-      },
-
-    ],
-
-    theme: "custom-theme",
-
-  };
-
-
+  if (data.length === 0) {
+    return <div>Loading...</div>;
+  }
 
   return (
-
     <div className="my-8 w-[100%] md:m-0 md:w-[40%] overflow-x-scroll">
-
-      Chart
-
-      <Pie {...config} />
-
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart>
+          <Pie
+            data={data}
+            dataKey="value"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            outerRadius={80}
+            label
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+            <LabelList
+              dataKey={({ value }) => value}
+              position="center"
+              fontSize={20}
+              fill="#ffffff"
+            />
+          </Pie>
+          <Tooltip />
+        </PieChart>
+      </ResponsiveContainer>
     </div>
-
   );
-
 };
 
-
-
 export default Chart;
-
