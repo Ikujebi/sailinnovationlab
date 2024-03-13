@@ -1,24 +1,39 @@
 import { lazy,Suspense } from 'react';
 import { RouterProvider, createBrowserRouter, Link } from 'react-router-dom';
 import Home from "./components/Home";
-const  Guests =  lazy(() => import ('./components/Guests')) ;
 import AboutNav from './components/AboutNav';
 import OurProgramsNav from './components/OurProgramsNav';
 import BlogNav from './components/BlogNav';
-import IndividualBlog1 from './components/IndividualBlog';
-import IndividualBlog2 from './components/individualBlog2';
-import ParticipantsSelection from './Facility/Pages/Participants/ParticipantsSelection';
-import Signin from './Facility/Pages/Signin/Sigin';
-import SignUp from "./Facility/Pages/SignUp/SignUp";
-import Dashboard from "./Facility/Pages/DashboardNew/Dashboard";
-import Details from "./Facility/Pages/DashboardNew/components/Details";
-import Profile from "./Facility/Pages/Profile/Profile";
-import ClockInHistory from "./Facility/Pages/DashboardNew/components/ClockInHistory/ClockInHistory";
-import Participants from "./Facility/Pages/Participants/Participants";
-import UserDashboard from "./Facility/Pages/DashboardNew/UserDashboard/UserDashboard";
-import UserDetails from "./Facility/Pages/DashboardNew/UserDashboard/components/UserDetails";
-import UserProfile from "./Facility/Pages/DashboardNew/UserDashboard/components/Profile/Profile";
-import ForgotPassword from "./Facility/Pages/ForgotPassword/ForgotPass"
+import UserDashboard1 from './Facility/Pages/DashboardNew/UserDashboard/UserDashboard';
+const  Guests =  lazy(() => import ('./components/Guests')) ;
+const  ParticipantsSelection =  lazy(() => import ('./Facility/Pages/Participants/ParticipantsSelection')) ;
+const  SignUp =  lazy(() => import ("./Facility/Pages/SignUp/SignUp")) ;
+const  Signin =  lazy(() => import ('./Facility/Pages/Signin/Sigin')) ;
+const  IndividualBlog1 =  lazy(() => import ('./components/IndividualBlog')) ;
+const  Dashboard =  lazy(() => import ("./Facility/Pages/DashboardNew/Dashboard")) ;
+const  Details =  lazy(() => import ("./Facility/Pages/DashboardNew/components/Details")) ;
+const  Profile =  lazy(() => import ("./Facility/Pages/Profile/Profile")) ;
+const  ClockInHistory =  lazy(() => import ("./Facility/Pages/DashboardNew/components/ClockInHistory/ClockInHistory")) ;
+const  Participants =  lazy(() => import ("./Facility/Pages/Participants/Participants")) ;
+const  UserDashboard =  lazy(() => import ("./Facility/Pages/DashboardNew/UserDashboard/UserDashboard")) ;
+const  IndividualBlog2 =  lazy(() => import ('./components/individualBlog2')) ;
+const  ForgotPassword =  lazy(() => import ("./Facility/Pages/ForgotPassword/ForgotPass")) ;
+const  ResetPassword =  lazy(() => import ("./Facility/Pages/ForgotPassword/ForgotPass")) ;
+const  UserDetails =  lazy(() => import ("./Facility/Pages/DashboardNew/UserDashboard/components/UserDetails")) ;
+const  UserProfile =  lazy(() => import ("./Facility/Pages/DashboardNew/UserDashboard/components/Profile/Profile")) ;
+const  Instructor =  lazy(() => import ("./Facility/Pages/Instructors/Instructors")) ;
+
+
+
+
+
+
+
+
+
+
+
+
 
 function App () {
   
@@ -30,6 +45,10 @@ function App () {
     {
       element: <Guests />,
       path: '/guest'
+    },
+    {
+      element: <UserDashboard1 />,
+      path: '/userDashboard1'
     },
     {
       element: <AboutNav />,
@@ -64,6 +83,10 @@ function App () {
       element: <ForgotPassword />,
       path: '/forgotPassword'
     },
+    {
+      element: <ResetPassword />,
+      path: '/resetPassword'
+    },
   
     {
       element: <Dashboard />,
@@ -96,6 +119,10 @@ function App () {
         {
           element: <ParticipantsSelection />,
           path: '/dashboard/details/participantsSelection'
+        },
+        {
+          element: <Instructor />,
+          path: '/dashboard/details/instructors'
         },
       ]
     },

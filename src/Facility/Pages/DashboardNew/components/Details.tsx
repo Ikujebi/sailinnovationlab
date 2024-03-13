@@ -7,6 +7,7 @@ import Greetings from "./Greeting";
 import useApplicantInfo from "../../../../hooks/useApplicantInfo";
 import useFetchPendingParticipants from "../../../../hooks/useFetchAprrovedParticipants";
 import useFetchApprovedParticipants from "../../../../hooks/useFetchDisapprovedParticipants"
+import ClockInButton from "./ClockInButton";
 
 interface ParticipantInfo {
   firstName: string;
@@ -21,18 +22,14 @@ const Details: FC = () => {
  const {approvedParticipants:approvedParticipants, loading: approvedParticipantsLoading} = useFetchPendingParticipants()
  const {rejectedParticipantsInfo:rejectedParticipantsInfo, loading: rejectedParticipantsInfoLoading} = useFetchApprovedParticipants()
 
-  console.log("ParticipantsInfo", participantsInfo);
-console.log("ParticipantsInfo",participantsInfo);
+ 
 
 const present = participantsInfo?.filter((participant) => participant.clockInStatus);
 
 const absent = participantsInfo?.filter((participant) => !participant.clockInStatus);
 
 const clockOuts = participantsInfo?.filter((participant) => participant.clockInStatus === false);
-console.log("Filtered Present Participants:", present);
-console.log("Filtered Absent Participants:", absent);
-console.log("Filtered ClockOut Participants:", clockOuts);                  
-console.log(participantsInfo?.length);
+
 
   const items = [
     {
@@ -90,7 +87,7 @@ console.log(participantsInfo?.length);
     },
     
   ];
-  console.log("THIS IS PRESENT",present);
+ 
   
 
   return (
@@ -125,6 +122,9 @@ console.log(participantsInfo?.length);
             </div>
           ))}
         </div>
+      </div>
+      <div>
+{/* <ClockInButton/> */}
       </div>
       <div className="mt-[10rem]">
         <div className="flex flex-wrap lg:flex-nowrap gap-[2rem] md:gap-[4rem] pl-4">

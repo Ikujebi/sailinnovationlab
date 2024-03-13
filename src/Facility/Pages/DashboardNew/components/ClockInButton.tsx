@@ -1,21 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,FC } from "react";
 import useGetLocation from "../../../../hooks/useGetLocation";
 import { Button } from "antd";
 import { BASE_URL } from "../../../../constants/baseUrl";
 import toast from "react-hot-toast";
-import useGetUserInfo from "../../../../hooks/useGetUserInfo";
-const ClockInButton = () => {
+
+
+type UserInfoType = {
+  clockInStatus?: string ; 
+};
+
+const ClockInButton:FC<{ userInfo: UserInfoType }> = ({ userInfo }) => {
   const { lat, long, getUserLocation } = useGetLocation();
-  const { userInfo } = useGetUserInfo({ endpoint: "getUserInfo" });
-  const isDisabled = userInfo.length > 0 ? typeof userInfo[0].clockInStatus === 'string' : false;
+
+  const isDisabled = userInfo ? typeof userInfo.clockInStatus === 'string' : false;
+
   useEffect(() => {
     getUserLocation();
   }, [getUserLocation]);
 
   const [loading, setLoading] = useState(false);
   const token = localStorage.getItem("token");
+
   const clockInHandler = async () => {
-    // console.log(lat, long);
     setLoading(true);
     try {
       const clockIn = await fetch(`${BASE_URL}clockin`, {
@@ -49,6 +55,7 @@ const ClockInButton = () => {
       console.log(error);
     }
   };
+
   return (
     <div>
       <Button
@@ -57,9 +64,8 @@ const ClockInButton = () => {
         className=" bg-blue-400 p-4 rounded-md text-slate-200 font-bold flex items-center"
         onClick={clockInHandler}
         disabled={isDisabled}
-
       >
-        {userInfo[0]?.clockInStatus ? "Clocked In" : "Clock In"}
+        {userInfo && userInfo.clockInStatus ? "Clocked In" : "Clock In"}
       </Button>
     </div>
   );

@@ -5,7 +5,7 @@ import useGetUserInfo from "../../../../../../hooks/useGetUserInfo";
 
 const UserProfile:FC = () => {
   const { userInfo, loading } = useGetUserInfo({ endpoint: "getUserInfo" });
-console.log("getUserInfo!!!!",userInfo);
+
 
   return (
     <Spin spinning={loading}>

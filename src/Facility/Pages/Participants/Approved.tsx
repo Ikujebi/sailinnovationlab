@@ -31,7 +31,7 @@ const Approved: React.FC = () => {
       .then((response) => {
         setApprovedParticipantsInfo(response.data.data.totalParticipants);
         setLoading(false);
-        console.log(response.data.data);
+        console.log("AYANFE'S QUERY",response.data.data);
       })
       .catch((error) => {
         console.error("Error fetching approved participants:", error);

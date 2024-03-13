@@ -8,7 +8,7 @@ import useGetUserInfo from "../../../hooks/useGetUserInfo";
 const Dashboard: FC = () => {
   // Fetch user information using the custom hook
   const { userInfo: userDetails, loading } = useGetUserInfo({ endpoint: "getUserInfo" });
-  console.log("USER DETAILS",userDetails);
+
   
 
   // Check if userDetails is an array and get the first element

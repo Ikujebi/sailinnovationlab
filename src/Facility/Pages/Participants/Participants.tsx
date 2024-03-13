@@ -1,7 +1,7 @@
 import {FC} from "react"
 import { Table, Spin } from "antd";
 import useGetParticipantInfo from "../../../hooks/useGetParticipants";
-import ParticipantsSelection from "./ParticipantsSelection";
+
 
 const Participants:FC = () => {
   const { participantsInfo, loading } = useGetParticipantInfo();

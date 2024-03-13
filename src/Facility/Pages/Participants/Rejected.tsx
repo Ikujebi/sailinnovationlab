@@ -29,7 +29,7 @@ const ParticipantsSelection: FC = () => {
         });
         setParticipantsInfo(response.data.data.totalParticipants);
         setLoading(false);
-        console.log(response.data.data);
+        
       } catch (error) {
         console.error("Error fetching approved participants:", error);
         setLoading(false);

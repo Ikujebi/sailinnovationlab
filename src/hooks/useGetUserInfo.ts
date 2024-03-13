@@ -12,6 +12,7 @@ interface UserInfo {
   sex: string;
   techStack: string;
   occupation: string;
+  clockInStatus?: string;
 }
 
 interface UseGetUserInfoProps {

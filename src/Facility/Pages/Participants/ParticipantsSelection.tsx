@@ -1,5 +1,5 @@
 import { FC, useState, useEffect } from "react";
-import { Table, Spin } from "antd";
+import { Table, Spin,message } from "antd";
 import axios from "axios";
 import { BASE_URL2 } from "../../../constants/baseUrl";
 
@@ -19,7 +19,7 @@ const ParticipantsSelection: FC = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-console.log("NEWTOKEEN!!!!!!!!",token);
+
 
 
     axios  
@@ -32,10 +32,10 @@ console.log("NEWTOKEEN!!!!!!!!",token);
       .then((response) => {
         setParticipantsInfo(response.data.data.totalParticipants);
         setLoading(false);
-        console.log(response.data.data);
+        
       })
       .catch((error) => {
-        console.error("Error fetching approved participants:", error);
+        
         setLoading(false);
       });
   }, []);
@@ -62,11 +62,11 @@ console.log("NEWTOKEEN!!!!!!!!",token);
 
       window.alert(responseStudents.data.responseMessage);
 
-      console.log(`Student with ID ${studentId} has been approved.`);
+      
       if (responseStudents.status === 200) {
-        console.log(`Student with ID ${studentId} has been approved.`);
+        message.success(`Student with ID ${studentId} has been approved.`);
       } else {
-        console.error(`Failed to approve student with ID ${studentId}.`);
+        message.error(`Failed to approve student with ID ${studentId}.`);
       }
     } catch (error) {
       console.error('Error approving student:', error);
@@ -92,11 +92,11 @@ console.log("NEWTOKEEN!!!!!!!!",token);
 
       window.alert(responseStudents.data.responseMessage);
 
-      console.log(`Student with ID ${studentId} has been disapproved.`);
+      message.success(`Student with ID ${studentId} has been disapproved.`);
       if (responseStudents.status === 200) {
-        console.log(`Student with ID ${studentId} has been disapproved.`);
+        message.success(`Student with ID ${studentId} has been disapproved.`);
       } else {
-        console.error(`Failed to disapprove student with ID ${studentId}.`);
+        message.error(`Failed to disapprove student with ID ${studentId}.`);
       }
     } catch (error) {
       console.error('Error disapproving student:', error);

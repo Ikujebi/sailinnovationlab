@@ -41,6 +41,11 @@ const Sidebar: React.FC = () => {
       icon: <GoCommentDiscussion />,
       link: "/dashboard/details/participantsSelection",
     },
+    {
+      name: "Instructors",
+      icon: <GoCommentDiscussion />,
+      link: "/dashboard/details/instructors",
+    },
     // {
     //   name: "Live class",
     //   icon: <AiOutlineVideoCamera />,
