@@ -30,7 +30,7 @@ const useGetParticipantInfo = () => {
         },
       });
       const response = await request.json();
-      // console.log(response.data);
+      console.log("roboboo" ,response.data);
       setLoading(false);
       setUserInfo(response.data);
     } catch (error) {

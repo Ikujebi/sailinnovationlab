@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import SailLogo from '../../assets/SailInnovationLogo.png';
 import { Button, Col, Form, Input, Row } from "antd";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../../constants/baseUrl";
 import toast from "react-hot-toast";
 
@@ -18,6 +18,8 @@ const Signin: React.FC = () => {
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     const storedUserRole = localStorage.getItem("userRole");
+    console.log();
+    
 
     if (storedToken && storedUserRole) {
       const isAdmin: boolean = storedUserRole === "ADMIN";
@@ -53,29 +55,29 @@ const Signin: React.FC = () => {
           duration: 4000,
           position: "top-center",
         });
-      }
-      
-      if (response?.data?.role === "ADMIN") {
-        navigate("/dashboard/details", {
-          replace: true,
-        });
-      }
-      
-      if (response?.data?.role === "USER") {
-        navigate("/user/dashboard/", {
-          replace: true,
-        });
-      }
-      
-      if (!logIn.ok) {
+
+        const token = response.data.token;
+        const userRole = response.data.role;
+
+        localStorage.setItem("token", token);
+        localStorage.setItem("userRole", userRole);
+
+        if (userRole === "ADMIN") {
+          navigate("/dashboard/details", {
+            replace: true,
+          });
+        } else if (userRole === "USER") {
+          navigate("/user/dashboard/", {
+            replace: true,
+          });
+        }
+      } else {
         toast.error(response.responseMessage, {
           duration: 4000,
           position: "top-center",
         });
       }
       
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("userRole", response.data.role);
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -150,6 +152,9 @@ const Signin: React.FC = () => {
                     />
                   </Form.Item>
                 </Col>
+                <Link to={"/forgotPassword"} className="text-sm font-normal mb-2 pl-[1rem] text-[#75C2F6]">
+                  <h6>Forgot password?</h6>
+                </Link>
                 <Col span={24}>
                   <Button
                     loading={loading}
@@ -161,6 +166,20 @@ const Signin: React.FC = () => {
                     Sign In
                   </Button>
                 </Col>
+                <Col span={24}>
+                <Link to={"/signup"}>
+                  <Button
+                    
+                    type="primary"
+                    htmlType="button"
+                    className=" greenHover bg-green-600 hover:!bg-green-500 !important mt-10 flex items-center  text-[1.3rem] justify-center py-5 "
+                    block
+                  >
+                    Create new account
+                  </Button>
+                  </Link>
+                </Col>
+            
               </Row>
             </Form>
           </div>

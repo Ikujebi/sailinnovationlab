@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect, useCallback } from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, LabelList } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend , LabelList } from 'recharts';
 import useGetParticipantInfo from '../../../../../hooks/useGetParticipants';
 
 interface Participant {
@@ -38,7 +38,7 @@ const Chart: FC = () => {
   }
 
   return (
-    <div className="my-8 w-[100%] md:m-0 md:w-[40%] overflow-x-scroll">
+    <div className="my-8 w-[100%] md:m-0 md:w-[40%] ">
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
@@ -61,6 +61,7 @@ const Chart: FC = () => {
             />
           </Pie>
           <Tooltip />
+          <Legend />
         </PieChart>
       </ResponsiveContainer>
     </div>
