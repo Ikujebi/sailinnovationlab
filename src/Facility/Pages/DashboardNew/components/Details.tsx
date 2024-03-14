@@ -5,8 +5,8 @@ import RecentClockIn from "./ClockInHistory/RecentClockIn";
 import useGetParticipantInfo from "../../../../hooks/useGetParticipants";
 import Greetings from "./Greeting";
 import useApplicantInfo from "../../../../hooks/useApplicantInfo";
-import useFetchPendingParticipants from "../../../../hooks/useFetchAprrovedParticipants";
-import useFetchApprovedParticipants from "../../../../hooks/useFetchDisapprovedParticipants"
+import useFetchAprrovedParticipants from "../../../../hooks/useFetchAprrovedParticipants";
+import useFetchDisapprovedParticipants from "../../../../hooks/useFetchDisapprovedParticipants"
 import ClockInButton from "./ClockInButton";
 
 interface ParticipantInfo {
@@ -19,8 +19,8 @@ interface ParticipantInfo {
 const Details: FC = () => {
   const { participantsInfo } = useGetParticipantInfo();
   const { applicantsantsInfo: applicantsantsInfo, loading: applicantLoading } = useApplicantInfo()// Use the useApplicantInfo hook
- const {approvedParticipants:approvedParticipants, loading: approvedParticipantsLoading} = useFetchPendingParticipants()
- const {rejectedParticipantsInfo:rejectedParticipantsInfo, loading: rejectedParticipantsInfoLoading} = useFetchApprovedParticipants()
+ const {approvedParticipants:approvedParticipants, loading: approvedParticipantsLoading} = useFetchAprrovedParticipants()
+ const {rejectedParticipantsInfo:rejectedParticipantsInfo, loading: rejectedParticipantsInfoLoading} = useFetchDisapprovedParticipants()
 
  
 

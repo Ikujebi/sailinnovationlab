@@ -22,6 +22,7 @@ const  ResetPassword =  lazy(() => import ("./Facility/Pages/ForgotPassword/Forg
 const  UserDetails =  lazy(() => import ("./Facility/Pages/DashboardNew/UserDashboard/components/UserDetails")) ;
 const  UserProfile =  lazy(() => import ("./Facility/Pages/DashboardNew/UserDashboard/components/Profile/Profile")) ;
 const  Instructor =  lazy(() => import ("./Facility/Pages/Instructors/Instructors")) ;
+const  RejectedParticipants=  lazy(() => import ("./Facility/Pages/Participants/Rejected")) ;
 
 
 
@@ -123,6 +124,10 @@ function App () {
         {
           element: <Instructor />,
           path: '/dashboard/details/instructors'
+        },
+        {
+          element: <RejectedParticipants />,
+          path: '/dashboard/details/rejectedParticipants'
         },
       ]
     },

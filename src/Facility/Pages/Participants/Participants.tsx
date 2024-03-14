@@ -1,10 +1,10 @@
 import {FC} from "react"
 import { Table, Spin } from "antd";
-import useGetParticipantInfo from "../../../hooks/useGetParticipants";
+import useGetParticipantInfo from "../../../hooks/useFetchAprrovedParticipants";
 
 
 const Participants:FC = () => {
-  const { participantsInfo, loading } = useGetParticipantInfo();
+  const { approvedParticipants, loading } = useGetParticipantInfo();
 
   const columns = [
     {
@@ -35,7 +35,7 @@ const Participants:FC = () => {
     },
   ];
 
-  const data = participantsInfo?.map((participant, index) => {
+  const data = approvedParticipants?.map((participant, index) => {
     return {
       key: participant.id,
       sn: index + 1,
