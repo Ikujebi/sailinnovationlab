@@ -11,8 +11,8 @@ const LogoutButton: FC = () => {
   };
   const handleOk = () => {
     setIsModalOpen(false);
-    localStorage.removeItem("token");
-    localStorage.removeItem("userRole");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("userRole");
     navigate("/", {
       replace: true,
     });

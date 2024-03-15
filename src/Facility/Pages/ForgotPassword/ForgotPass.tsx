@@ -73,8 +73,8 @@ const Signin:FC = () => {
           });
           
           
-          localStorage.getItem("token");
-          localStorage.getItem("userRole");
+          sessionStorage.getItem("token");
+          sessionStorage.getItem("userRole");
           setMessage('Login successful');
           navigate('/dashboard');
         } else {

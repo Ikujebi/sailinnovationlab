@@ -22,7 +22,7 @@ interface UseGetUserInfoProps {
 const useGetUserInfo = (props: UseGetUserInfoProps) => {
   const { endpoint } = props;
   const [userInfo, setUserInfo] = useState<UserInfo>();
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   const [loading, setLoading] = useState<boolean>(false);
 
   const getUserInfo = useCallback(async () => {

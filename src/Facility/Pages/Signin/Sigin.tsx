@@ -16,8 +16,8 @@ const Signin: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    const storedUserRole = localStorage.getItem("userRole");
+    const storedToken = sessionStorage.getItem("token");
+    const storedUserRole = sessionStorage.getItem("userRole");
     console.log();
     
 
@@ -59,8 +59,8 @@ const Signin: React.FC = () => {
         const token = response.data.token;
         const userRole = response.data.role;
 
-        localStorage.setItem("token", token);
-        localStorage.setItem("userRole", userRole);
+        sessionStorage.setItem("token", token);
+        sessionStorage.setItem("userRole", userRole);
 
         if (userRole === "ADMIN") {
           navigate("/dashboard/details", {

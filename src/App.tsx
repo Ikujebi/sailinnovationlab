@@ -23,6 +23,8 @@ const  UserDetails =  lazy(() => import ("./Facility/Pages/DashboardNew/UserDash
 const  UserProfile =  lazy(() => import ("./Facility/Pages/DashboardNew/UserDashboard/components/Profile/Profile")) ;
 const  Instructor =  lazy(() => import ("./Facility/Pages/Instructors/Instructors")) ;
 const  RejectedParticipants=  lazy(() => import ("./Facility/Pages/Participants/Rejected")) ;
+const  UpdateEvents=  lazy(() => import ("./Facility/Pages/Events/UploadEvent")) ;
+const  Events=  lazy(() => import ("./Facility/Pages/Events/Events")) ;
 
 
 
@@ -124,6 +126,14 @@ function App () {
         {
           element: <Instructor />,
           path: '/dashboard/details/instructors'
+        },
+        {
+          element: <UpdateEvents />,
+          path: '/dashboard/details/updatedEvent'
+        },
+        {
+          element: <Events />,
+          path: '/dashboard/details/Events'
         },
         {
           element: <RejectedParticipants />,

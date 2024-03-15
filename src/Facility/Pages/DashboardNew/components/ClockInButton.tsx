@@ -19,7 +19,7 @@ const ClockInButton:FC<{ userInfo: UserInfoType }> = ({ userInfo }) => {
   }, [getUserLocation]);
 
   const [loading, setLoading] = useState(false);
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
 
   const clockInHandler = async () => {
     setLoading(true);
@@ -43,7 +43,7 @@ const ClockInButton:FC<{ userInfo: UserInfoType }> = ({ userInfo }) => {
         });
       }
       if (clockIn.ok && time <= 14) {
-        localStorage.setItem("clockInStatus", response.data.clockInStatus);
+        sessionStorage.setItem("clockInStatus", response.data.clockInStatus);
         toast.success(response?.responseMessage, {
           duration: 4000,
           position: "top-center",

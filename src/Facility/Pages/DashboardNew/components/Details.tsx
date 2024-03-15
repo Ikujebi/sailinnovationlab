@@ -8,6 +8,7 @@ import useApplicantInfo from "../../../../hooks/useApplicantInfo";
 import useFetchAprrovedParticipants from "../../../../hooks/useFetchAprrovedParticipants";
 import useFetchDisapprovedParticipants from "../../../../hooks/useFetchDisapprovedParticipants"
 import ClockInButton from "./ClockInButton";
+import Event from "../../Events/Events"
 
 interface ParticipantInfo {
   firstName: string;
@@ -131,6 +132,9 @@ const clockOuts = participantsInfo?.filter((participant) => participant.clockInS
           <RecentClockIn participantsInfo={present} />
           
         <Chart />
+        </div>
+        <div>
+          <Event/>
         </div>
       </div>
     </div>

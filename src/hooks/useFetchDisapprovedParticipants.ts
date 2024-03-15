@@ -22,7 +22,7 @@ const useFetchDisapprovedParticipants = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
 
         const rejectedResponse = await axios.get(`${BASE_URL2}getAllDisapprovedParticipants`, {
           headers: {

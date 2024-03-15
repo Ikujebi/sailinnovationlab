@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 const ClockOutButton: FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const token: string | null = localStorage.getItem("token");
+  const token: string | null = sessionStorage.getItem("token");
 
   const clockOutHandler = async () => {
     setLoading(true);
@@ -26,7 +26,7 @@ const ClockOutButton: FC = () => {
         });
       }
       if (clockOut.ok && time >= 14) {
-        localStorage.removeItem("clockInStatus");
+        sessionStorage.removeItem("clockInStatus");
         toast.success(response.responseMessage, {
           duration: 4000,
           position: "top-center",

@@ -18,7 +18,7 @@ const ParticipantsSelection: FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
 
 
 
@@ -41,7 +41,7 @@ const ParticipantsSelection: FC = () => {
   }, []);
 
   const apiUrl = `${BASE_URL2}approvePendingParticipants/`;
-  const newToken = localStorage.getItem('token');
+  const newToken = sessionStorage.getItem('token');
 
   const handleApproveStudents = async (studentId: string) => {
     try {

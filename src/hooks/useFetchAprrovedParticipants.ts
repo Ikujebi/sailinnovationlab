@@ -22,7 +22,7 @@ const useFetchApprovedParticipants = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
 console.log('tokenn!!!!!',token);
 
         const totalResponse = await axios.get(`${BASE_URL2}getAllApprovedParticipants`, {

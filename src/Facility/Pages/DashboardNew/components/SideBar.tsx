@@ -49,6 +49,16 @@ const Sidebar: React.FC = () => {
       link: "/dashboard/details/instructors",
     },
     {
+      name: "Update Events",
+      icon: <GoCommentDiscussion />,
+      link: "/dashboard/details/updatedEvent",
+    },
+    {
+      name: " Events",
+      icon: <GoCommentDiscussion />,
+      link: "/dashboard/details/Events",
+    },
+    {
       name: "Applications",
       icon: <GoCommentDiscussion />,
       link: "",
@@ -60,7 +70,7 @@ const Sidebar: React.FC = () => {
   ];
 
   return (
-    <div className="border-r-[#e9e6e6] border h-screen px-1">
+    <div className="border-r-[#e9e6e6] border fixed h-screen px-1">
       <div className="flex flex-wrap p-4 gap-4 text-[--green] items-center">
         <div className="bg-[--green] h-[3rem] w-[3rem] rounded-md"></div>
         <div>
@@ -93,10 +103,11 @@ const Sidebar: React.FC = () => {
                   {item.subItems.map((subItem, subIndex) => (
                     <button
                       key={subIndex}
+                      className="block"
                       onClick={() => navigate(subItem.link, { replace: true })}
                     >
                       <li
-                        className={`text-xl flex items-center gap-1 pb-[.3rem] ml-4  ${
+                        className={`text-xl flex  items-center  gap-1 pb-[.3rem] ml-4  ${
                           location.pathname === subItem.link
                             ? "bg-[--green] font-bold rounded-lg text-white"
                             : "text-slate-400"

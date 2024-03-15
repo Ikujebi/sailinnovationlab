@@ -3,6 +3,8 @@ import SailLogo from "../../assets/SailInnovationLogo.png";
 import { Link } from "react-router-dom";
 import { Form, Row, Col, Button, Input } from "antd";
 import useGatherSignUpInfo from "../../../hooks/useGatherSignUpInfo";
+import { BASE_URL_SIGNUP } from "../../../constants/baseUrl";
+
 
 const SignUp: FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -11,7 +13,7 @@ const SignUp: FC = () => {
   const formSubmitHandler = async () => {
     setLoading(true);
     try {
-      const sendData = await fetch("https://ams-backend-yjri.onrender.com/signup", {
+      const sendData = await fetch(BASE_URL_SIGNUP, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

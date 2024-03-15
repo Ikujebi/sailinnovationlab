@@ -17,7 +17,7 @@ type ParticipantInfo = {
 const useGetParticipantInfo = () => {
   const [participantsInfo, setUserInfo] = useState<ParticipantInfo[]>([]);
   const [loading, setLoading] = useState(false);
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
 
   const getUserInfo = useCallback(async () => {
     setLoading(true);
