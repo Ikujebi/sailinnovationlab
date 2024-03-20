@@ -1,18 +1,27 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Calendar, Modal } from "antd";
 import  { Dayjs } from "dayjs"; // Import Dayjs and Dayjs type
 import { EventData } from "../../../../../hooks/useEventData"; // Import EventData interface
+import { BsThreeDots } from "react-icons/bs";
 
 interface CalendarAppProps {
   eventData: EventData[];
 }
 
 const CalendarApp: FC<CalendarAppProps> = ({ eventData }) => {
+  const [calendarVisible, setCalendarVisible] = useState(false)
+  
+  const toggleCalendarVisibility = () => {
+    setCalendarVisible(!calendarVisible);
+  };
   const openReminderModal = (value: Dayjs) => {
     const currentDate = value.format("YYYY-MM-DD");
     const eventsForDate = eventData.filter(
       (event) => event.eventDate === currentDate
     );
+
+
+    
 
     Modal.info({
       title: "Events",
@@ -47,7 +56,17 @@ const CalendarApp: FC<CalendarAppProps> = ({ eventData }) => {
 
   return (
     <div>
-      <Calendar onPanelChange={dateCellRender} />
+      <header className=" cursor-[pointer]" onClick={toggleCalendarVisibility}>
+        <h1 className="flex gap-2 text-green-300 text-[1.6rem]"> 
+        {calendarVisible ? "close calendar" : "open calendar"}{" "}
+        <span className="mt-[.75rem] "><BsThreeDots/></span> </h1>
+        
+      </header>
+      {calendarVisible && (
+        <div className="mx-1">
+          <Calendar cellRender={dateCellRender} />
+        </div>
+      )}
     </div>
   );
 };

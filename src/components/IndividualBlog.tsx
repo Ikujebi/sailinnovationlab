@@ -3,7 +3,7 @@ import HeaderNav from "./HeaderNav";
 import Footer from "./Footer";
 import face from "../images/face.svg"
 import twiter from "../images/twiter.svg"
-import { Link } from 'react-router-dom';
+
 
 const IndividualBlog: FC = () => {
   const isIndividualBlogPage = true;

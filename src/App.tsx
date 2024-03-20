@@ -25,6 +25,8 @@ const  Instructor =  lazy(() => import ("./Facility/Pages/Instructors/Instructor
 const  RejectedParticipants=  lazy(() => import ("./Facility/Pages/Participants/Rejected")) ;
 const  UpdateEvents=  lazy(() => import ("./Facility/Pages/Events/UploadEvent")) ;
 const  Events=  lazy(() => import ("./Facility/Pages/Events/Events")) ;
+const  Tasks=  lazy(() => import ("./Facility/Pages/Tasks/Tasks")) ;
+const  TaskQuestion=  lazy(() => import ("./Facility/Pages/Tasks/TaskQuestions")) ;
 
 
 
@@ -90,6 +92,10 @@ function App () {
       element: <ResetPassword />,
       path: '/resetPassword'
     },
+    {
+      element: <TaskQuestion />,
+      path: '//taskQuestions/:taskId'
+    },
   
     {
       element: <Dashboard />,
@@ -133,11 +139,15 @@ function App () {
         },
         {
           element: <Events />,
-          path: '/dashboard/details/Events'
+          path: '/dashboard/details/events'
         },
         {
           element: <RejectedParticipants />,
           path: '/dashboard/details/rejectedParticipants'
+        },
+        {
+          element: <Tasks />,
+          path: '/dashboard/details/tasks'
         },
       ]
     },

@@ -35,7 +35,7 @@ const LogoutButton: FC = () => {
       </button>
       <Modal
         title="Logout"
-        visible={isModalOpen}
+        open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
       >

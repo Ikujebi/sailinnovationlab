@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { Table, Spin, Popconfirm } from "antd";
 import axios from "axios";
-import { BsThreeDots } from "react-icons/bs";
 import CalendarApp from "../DashboardNew/UserDashboard/components/Calendar";
-import { useEventData, EventData } from "../../../hooks/useEventData";
+import { useEventData } from "../../../hooks/useEventData";
 
 const EventSchedules: React.FC = () => {
   const { eventDatas, loading } = useEventData();
@@ -87,7 +86,7 @@ const EventSchedules: React.FC = () => {
   ];
 
   return (
-    <Spin spinning={loading}>
+    <Spin spinning={loading} className="w-[100%]">
       <div className="overflow-x-auto ">
         
         <Table columns={columns} dataSource={userData} />

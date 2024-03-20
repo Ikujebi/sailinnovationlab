@@ -131,7 +131,7 @@ const OurProgramsNav: FC = () => {
 
   return (
     <div className="mt-[1.5rem] text-gray-800 karla">
-      <HeaderNav />
+      <HeaderNav margin />
       <header className="flex justify-center mt-[5rem]">
         <h1 className="flex justify-center w-[22rem] mb-[2rem] py-[.1rem] bg-[#184c94] text-white rounded-xl">
           PROGRAMS

@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useCallback } from 'react';
+import  { FC, useState, useEffect, useCallback } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend , LabelList } from 'recharts';
 import useGetParticipantInfo from '../../../../../hooks/useGetParticipants';
 
@@ -50,7 +50,7 @@ const Chart: FC = () => {
             outerRadius={80}
             label
           >
-            {data.map((entry, index) => (
+            {data.map((_entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
             <LabelList

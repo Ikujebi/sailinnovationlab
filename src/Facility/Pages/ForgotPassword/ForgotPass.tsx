@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState, ChangeEvent, FormEvent,FC } from "react";
+import {  useLayoutEffect, useState, ChangeEvent, FormEvent,FC } from "react";
 import SailLogo from "../../assets/SailInnovationLogo.png";
 import Modal from "./ForgotModal";
 import { Button, Col, Form, Input, Row } from "antd";
@@ -13,7 +13,7 @@ interface SignInInfo {
 
 const Signin:FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
+  const [_message, setMessage] = useState<string>("");
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [signInInfo, setSignInInfo] = useState<SignInInfo>({
     email: '',
@@ -23,9 +23,9 @@ const Signin:FC = () => {
     email: '',
   });
 
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
+  // const openModal = () => {
+  //   setModalIsOpen(true);
+  // };
 
   const closeModal = () => {
     setModalIsOpen(false);
@@ -61,7 +61,7 @@ const Signin:FC = () => {
     setLoading(true);
     try {
       if (validateForm()) {
-        const { email, password } = signInInfo;
+        const { email } = signInInfo;
         const response = await axios.post(
           process.env.REACT_APP_SSMP_BACKEND_API + "user/forgotPassword", { email }
         )

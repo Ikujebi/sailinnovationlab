@@ -5,7 +5,7 @@ import EventSchedules from './EventSchedule';
 
 const Schedules: FC = () => {
   return (
-    <div className='flex'>
+    <div className='flex w-[100%]'>
         <hr className=' bg-black' />
           <EventSchedules/>
 

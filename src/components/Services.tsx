@@ -1,7 +1,6 @@
 import { FC } from "react";
 import kite1 from '../images/rhombus (3).png'
 import kite2 from '../images/rhombus (1).png'
-import kite3 from '../images/rhombus (2).png'
 import kitespecial from '../images/kite1.png'
 import circle from '../images/top-view-yellow-circle-white-background-removebg-preview.png'
 

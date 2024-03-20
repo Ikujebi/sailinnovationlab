@@ -34,3 +34,8 @@
 .svg-icon {
   filter: invert(63%) sepia(41%) saturate(7537%) hue-rotate(191deg) brightness(2%) contrast(99%);
 }
+
+
+.rotate-icon {
+  transform: rotate(270deg); /* Change the rotation degree as needed */
+}

@@ -1,5 +1,6 @@
-import { useState,FC } from 'react';
+import { useState, FC } from 'react';
 import axios from 'axios';
+import { useEventData } from '../../../hooks/useEventData';
 
 const inputField: React.CSSProperties = {
   width: '50vw',
@@ -14,7 +15,8 @@ const label: React.CSSProperties = {
   fontWeight: 'semi-bold',
 };
 
-const Upload:FC = () => {
+const Upload: FC = () => {
+  const { eventDatas } = useEventData();
   const [eventData, setEventData] = useState({
     eventName: '',
     eventDescription: '',
@@ -24,6 +26,8 @@ const Upload:FC = () => {
     // ... other event details
   });
 
+  const [error, setError] = useState<string | null>(null);
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setEventData((prevData) => ({ ...prevData, [name]: value }));
@@ -31,9 +35,13 @@ const Upload:FC = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    const existingEvent = eventDatas.find((event) => event.eventName === eventData.eventName);
+    if (existingEvent) {
+      setError('Event Name already exists.');
+      return;
+    }
     const token = sessionStorage.getItem('token');
-console.log("toke37645tguyuf8iyy!!!", token);
+    console.log("toke37645tguyuf8iyy!!!", token);
 
     try {
       const response = await axios.post(
@@ -46,7 +54,7 @@ console.log("toke37645tguyuf8iyy!!!", token);
           },
         }
       );
-console.log(eventData);
+      console.log(eventData);
 
       if (response.status === 200) {
         console.log('Event created successfully!');
@@ -58,7 +66,7 @@ console.log(eventData);
       }
     } catch (error) {
       console.error('An error occurred:', error);
-      window.alert( `An error occurred:${error}`);
+      window.alert(`An error occurred:${error}`);
       // Handle error cases
     }
 
@@ -141,10 +149,13 @@ console.log(eventData);
               required
             />
             <br />
-
+            <div className='flex justify-center'>
+            {error && <div style={{ color: 'red' }}>{error}</div>}
+            </div>
             <input
               type='submit'
               value='Upload Event'
+
               style={{
                 height: '2rem',
                 width: '8rem',

@@ -3,7 +3,7 @@ import logo from "../../assets/SailInnovationLogo.png";
 import PinInput from "react-pin-input";
 import Modal from "../ForgotPassword/ForgotModal";
 import { Form } from "antd";
-import ModalContent from "./ResetModal";
+// import ModalContent from "./ResetModal";
 
 const Reset: FC = () => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
@@ -16,7 +16,7 @@ const Reset: FC = () => {
     setModalIsOpen(false);
   };
 
-  const [otp, setOtp] = useState<string>('');
+  const [otp, _setOtp] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 

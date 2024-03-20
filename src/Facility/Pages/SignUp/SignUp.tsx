@@ -8,7 +8,7 @@ import { BASE_URL_SIGNUP } from "../../../constants/baseUrl";
 
 const SignUp: FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [formData, setFormData] = useState<any>(); // Adjust type as per your form data structure
+  const [formData, _setFormData] = useState<any>(); // Adjust type as per your form data structure
 
   const formSubmitHandler = async () => {
     setLoading(true);

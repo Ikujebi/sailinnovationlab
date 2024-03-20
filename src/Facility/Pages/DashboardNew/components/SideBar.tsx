@@ -1,10 +1,15 @@
 import {Fragment} from "react";
-import { BiSolidDashboard } from "react-icons/bi";
+import { IoHomeOutline } from "react-icons/io5";
 import { CgNotes } from "react-icons/cg";
+import { FaUserClock } from "react-icons/fa6";
 import { FiUsers } from "react-icons/fi";
 import { GoCommentDiscussion } from "react-icons/go";
+import { GiTeacher } from "react-icons/gi";
+import { PiStudentBold } from "react-icons/pi";
 import LogoutButton from "./LogoutButton";
 import { useNavigate, useLocation } from "react-router";
+import { MdEvent } from "react-icons/md";
+import { GrTask } from "react-icons/gr";
 
 interface NavItem {
   name: string;
@@ -20,12 +25,12 @@ const Sidebar: React.FC = () => {
   const navItems: NavItem[] = [
     {
       name: "Dashboard",
-      icon: <BiSolidDashboard />,
+      icon: <IoHomeOutline />,
       link: "/dashboard/details",
     },
     {
       name: "Clock-Ins",
-      icon: <CgNotes />,
+      icon: <FaUserClock />,
       link: "/dashboard/details/clockins",
     },
     {
@@ -35,7 +40,7 @@ const Sidebar: React.FC = () => {
     },
     {
       name: "Participants",
-      icon: <GoCommentDiscussion />,
+      icon: <PiStudentBold />,
       link: "/dashboard/details/participants",
     },
     {
@@ -45,7 +50,7 @@ const Sidebar: React.FC = () => {
     },
     {
       name: "Instructors",
-      icon: <GoCommentDiscussion />,
+      icon: <GiTeacher />,
       link: "/dashboard/details/instructors",
     },
     {
@@ -55,8 +60,13 @@ const Sidebar: React.FC = () => {
     },
     {
       name: " Events",
-      icon: <GoCommentDiscussion />,
-      link: "/dashboard/details/Events",
+      icon: <MdEvent />,
+      link: "/dashboard/details/events",
+    },
+    {
+      name: " Tasks",
+      icon: <GrTask />,
+      link: "/dashboard/details/tasks",
     },
     {
       name: "Applications",
@@ -70,7 +80,8 @@ const Sidebar: React.FC = () => {
   ];
 
   return (
-    <div className="border-r-[#e9e6e6] border fixed h-screen px-1">
+    <div className="border-r-[#e9e6e6] border fixed h-screen px-1 ">
+      <div className=" bg-yellow-300 rounded-3xl mt-3">
       <div className="flex flex-wrap p-4 gap-4 text-[--green] items-center">
         <div className="bg-[--green] h-[3rem] w-[3rem] rounded-md"></div>
         <div>
@@ -122,8 +133,12 @@ const Sidebar: React.FC = () => {
               )}
             </Fragment>
           ))}
+          
         </ul>
-        <LogoutButton />
+        <div className="pb-[-5rem]">
+          <LogoutButton />
+          </div>
+      </div>
       </div>
     </div>
   );

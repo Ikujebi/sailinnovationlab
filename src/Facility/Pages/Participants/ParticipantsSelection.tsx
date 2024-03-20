@@ -35,6 +35,7 @@ const ParticipantsSelection: FC = () => {
         
       })
       .catch((error) => {
+        message.error(error);
         
         setLoading(false);
       });
@@ -114,7 +115,7 @@ const ParticipantsSelection: FC = () => {
     {
       title: 'Action',
       key: 'action',
-      render: (text: any, record: { key: string }) => (
+      render: ( record: { key: string }) => (
         <div className=" gap-4 flex">
           <button
             className="bg-blue-700 h-[1.5rem] w-[5rem] text-white font-semibold rounded-md"

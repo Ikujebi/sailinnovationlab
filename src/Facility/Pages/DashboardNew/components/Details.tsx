@@ -7,21 +7,16 @@ import Greetings from "./Greeting";
 import useApplicantInfo from "../../../../hooks/useApplicantInfo";
 import useFetchAprrovedParticipants from "../../../../hooks/useFetchAprrovedParticipants";
 import useFetchDisapprovedParticipants from "../../../../hooks/useFetchDisapprovedParticipants"
-import ClockInButton from "./ClockInButton";
-import Event from "../../Events/Events"
 
-interface ParticipantInfo {
-  firstName: string;
-  lastName: string;
-  clockInDate: string | null;
-  clockOutDate: string | null;
-  clockInStatus: boolean;}
+import { Calendar } from "antd";
+
+
 
 const Details: FC = () => {
   const { participantsInfo } = useGetParticipantInfo();
-  const { applicantsantsInfo: applicantsantsInfo, loading: applicantLoading } = useApplicantInfo()// Use the useApplicantInfo hook
- const {approvedParticipants:approvedParticipants, loading: approvedParticipantsLoading} = useFetchAprrovedParticipants()
- const {rejectedParticipantsInfo:rejectedParticipantsInfo, loading: rejectedParticipantsInfoLoading} = useFetchDisapprovedParticipants()
+  const { applicantsantsInfo: applicantsantsInfo, loading: _applicantLoading } = useApplicantInfo()// Use the useApplicantInfo hook
+ const {approvedParticipants:approvedParticipants, loading: _approvedParticipantsLoading} = useFetchAprrovedParticipants()
+ const {rejectedParticipantsInfo:rejectedParticipantsInfo, loading: _rejectedParticipantsInfoLoading} = useFetchDisapprovedParticipants()
 
  
 
@@ -133,8 +128,8 @@ const clockOuts = participantsInfo?.filter((participant) => participant.clockInS
           
         <Chart />
         </div>
-        <div>
-          <Event/>
+        <div className="mt-[7rem]">
+          <Calendar/>
         </div>
       </div>
     </div>
