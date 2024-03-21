@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "builds": [
+      { "src": "index.html", "use": "@vercel/static-build" },
+      { "src": "api/**/*.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+      { "handle": "filesystem" },
+      { "src": "/api/(.*)", "dest": "/api/$1" },
+      { "src": "/(.*)", "dest": "/index.html" }
+    ],
+    "env": {
+        "VITE_GUEST_FORM" : "https://ssmp-api.onrender.com/api/v1/visit/visitRequest",
+        "VITE_GUEST_Code" :  "https://ssmp-api.onrender.com/api/v1/visit/getVisitorqrCode",
+        
+       " VITE_APP_SSMP_BACKEND_API" : "https://ssmp-api.onrender.com/api/v1/"
+    }
+  }
+  
