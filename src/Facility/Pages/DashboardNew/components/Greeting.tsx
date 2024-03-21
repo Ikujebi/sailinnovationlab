@@ -15,7 +15,7 @@ function Greetings() {
   const styles: React.CSSProperties = {
     fontSize: 23,
   };
-
+ 
   useEffect(() => {
     if (!loading && userInfo) {
       // Use the user's first name here
