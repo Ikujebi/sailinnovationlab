@@ -1,15 +1,64 @@
-import {FC} from "react"
-import image from "../Profile/profile-image.avif";
+import { FC, useState, useRef,useCallback } from "react";
+import { useDropzone } from "react-dropzone";
+import Webcam from "react-webcam"; // Import the Webcam component
 import useGetUserInfo from "../../../hooks/useGetUserInfo";
-import { Spin } from "antd";
+import { Spin, message } from "antd";
 import { FaPenAlt } from "react-icons/fa";
+import defaultImage from './profile-image.avif'
 
-// import { uploadImage } from "./cloudinaryUtils";
-
-const Profile:FC = () => {
+const Profile: FC = () => {
   const { userInfo, loading } = useGetUserInfo({ endpoint: "getUserInfo" });
- /*  const [profileImage, setProfileImage] = useState<string | null>(null);
-  const [uploading, setUploading] = useState<boolean>(false); */
+  const [_uploading, setUploading] = useState<boolean>(false);
+  const [captureMethod, setCaptureMethod] = useState<string>("file"); // State variable to track capture method
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const webcamRef = useRef<Webcam>(null) // Create a ref for the Webcam component
+  const [imageSrc, setImageSrc] = useState<string>(defaultImage);
+  const [mirrored, setMirrored] = useState(false);
+
+
+  const onDrop = async (acceptedFiles: File[]) => {
+    if (acceptedFiles.length === 0) return;
+
+    setUploading(true);
+    try {
+
+      const file = acceptedFiles[0];
+      const imageUrl = URL.createObjectURL(file);
+      setImageSrc(imageUrl);
+      // Add your image upload logic here
+      // For now, I'm just showing a success message
+      message.success("Profile picture updated successfully!");
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      message.error("Failed to update profile picture");
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
+  const handleClickChangePicture = () => {
+    if (captureMethod === "file") {
+      if (fileInputRef.current) {
+        fileInputRef.current.click();
+      }
+    } else if (captureMethod === "webcam") {
+      setMirrored (prevState => !prevState);
+      captureImageFromWebcam();
+    }
+  };
+
+  const captureImageFromWebcam = useCallback(() => {
+    const imageSrc = webcamRef.current?.getScreenshot();
+    if (imageSrc) {
+      setImageSrc(imageSrc);
+    }
+  }, [webcamRef]);
+
+  const handleToggleCaptureMethod = () => {
+    setCaptureMethod(prevMethod => (prevMethod === "file" ? "webcam" : "file"));
+  };
 
   if (loading) {
     return <Spin spinning={loading} />;
@@ -19,84 +68,57 @@ const Profile:FC = () => {
     return <div>No user information available</div>;
   }
 
-  /* const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files && e.target.files[0];
-    if (!file) return;
-
-    setUploading(true);
-    try {
-      // const imageUrl = await uploadImage("file");
-      // setProfileImage(imageUrl);
-      message.success("Profile picture updated successfully!");
-    } catch (error) {
-      console.error("Error uploading image:", error);
-      message.error("Failed to update profile picture");
-    } finally {
-      setUploading(false);
-    }
-  }; */
+//   const handleMirror= () =>{
+// setMirrored (prevState => !prevState);
+//   }
 
   return (
-    
-      <div className="  mx-9  m-3 flex gap-[4rem] justify-center">
-        <div className="flex flex-col justify-center items-center gap-4">
-          <img id="profile-image"
-            src={image}
-            alt="image-profile"
-            className="h-[14rem] w-[14rem] p-5 rounded-md"
-          />
-          <p className="flex gap-2">change profile picture {" "} <span className="rotate-icon">
-            <FaPenAlt  className="w-30px"/>
-          </span></p>
-        <hr className="w-full mt-[12px]" />
-          <h2 className=" bg-slate-100 p-4 rounded-md font-semibold">
-            {userInfo?.firstName + " " + userInfo?.lastName}
-            <span> - {userInfo?.role}</span>
-          </h2>
-  
-         </div>
-        <div className="grid gap-4 mt-8 ">
-          <div className="grid grid-cols-[1fr_1fr] h-[4rem] bg-slate-100 p-4 rounded-md font-medium">
-            <p className="">Full name : </p>
-            <p>{userInfo?.firstName + " " + userInfo?.lastName}</p>
-          </div>
-          <div className="grid grid-cols-[1fr_1fr] h-[4rem] bg-slate-100 p-4 rounded-md font-medium">
-            <p className="">Email : </p>
-            <p>{userInfo?.email}</p>
-          </div>
-          {userInfo?.sex && (
-            <div className="grid grid-cols-[1fr_1fr] h-[4rem] bg-slate-100 p-4 rounded-md font-medium">
-              <p className="">Gender : </p>
-              <p>{userInfo?.sex}</p>
-            </div>
+    <div className="mx-9 m-3 flex gap-[4rem] justify-center">
+      <div className="flex flex-col justify-center items-center gap-4">
+        <div {...getRootProps()} className="cursor-pointer">
+          <input {...getInputProps()} ref={fileInputRef} style={{ display: "none" }} />
+          {captureMethod === "file" ? (
+            <img
+              id="profile-image"
+              src={imageSrc}
+              alt="image-profile"
+              className="h-[14rem] w-[14rem] p-5 rounded-md"
+            />
+          ) : (
+            <Webcam
+  height={600}
+  width={600}
+  mirrored={mirrored}
+  ref={webcamRef}
+  screenshotFormat="image/jpeg" // Specify the format of the screenshot
+/>
+          
+            
           )}
-          {userInfo?.lga && (
-            <div className="grid grid-cols-[10rem_10rem]">
-              <p className="">Local Govt. Area : </p>
-              <p>{userInfo?.lga}</p>
-            </div>
-          )}
-          {userInfo?.programme && (
-            <div className="grid grid-cols-[10rem_10rem]">
-              <p className="">Programme : </p>
-              <p>{userInfo?.programme}</p>
-            </div>
-          )}
-          {userInfo?.occupation && (
-            <div className="grid grid-cols-[10rem_10rem]">
-              <p className="">Occupation : </p>
-              <p>{userInfo?.occupation}</p>
-            </div>
-          )}
-          {userInfo?.techStack && (
-            <div className="grid grid-cols-[10rem_10rem]">
-              <p className="">Tech Stack : </p>
-              <p>{userInfo?.techStack?.toUpperCase()}</p>
-            </div>
-          )}
+          
+         
+          <label onClick={handleClickChangePicture}>
+            <p id="changeProfilePicture" className="flex gap-2 cursor-pointer">
+              Change profile picture{" "}
+              <span className="rotate-icon">
+                <FaPenAlt className="w-30px" />
+              </span>
+            </p>
+          </label>
         </div>
+        <button className="p-2 text-gray-100 bg-[#713f12] rounded-2xl" onClick={handleToggleCaptureMethod}>
+          {captureMethod === "file" ? "Use Webcam" : "CAPTURE"}
+        </button>
+        <hr className="w-full mt-[12px]" />
+        <h2 className="bg-slate-100 p-4 rounded-md font-semibold">
+          {userInfo?.firstName + " " + userInfo?.lastName}
+          <span> - {userInfo?.role}</span>
+        </h2>
       </div>
-    
+      <div className="grid gap-4 mt-8 ">
+        {/* Your other profile information */}
+      </div>
+    </div>
   );
 };
 
