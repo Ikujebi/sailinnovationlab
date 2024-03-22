@@ -27,6 +27,7 @@ const  UpdateEvents=  lazy(() => import ("./Facility/Pages/Events/UploadEvent"))
 const  Events=  lazy(() => import ("./Facility/Pages/Events/Events")) ;
 const  Tasks=  lazy(() => import ("./Facility/Pages/Tasks/Tasks")) ;
 const  TaskQuestion=  lazy(() => import ("./Facility/Pages/Tasks/TaskQuestions")) ;
+const  HomeComponent=  lazy(() => import ("./components/HomeComponent")) ;
 
 
 
@@ -66,6 +67,10 @@ function App () {
     {
       element: <BlogNav />,
       path: '/blognav'
+    },
+    {
+      element: <HomeComponent />,
+      path: '/homeComponent'
     },
     {
       element: <IndividualBlog1 />,

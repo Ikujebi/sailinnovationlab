@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import SailLogo from '../../assets/SailInnovationLogo.png';
+// import SailLogo from '../../assets/SailInnovationLogo.png';
 import { Button, Col, Form, Input, Row } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../../constants/baseUrl";
 import toast from "react-hot-toast";
+import HomeComponent from "../../../components/HomeComponent";
 
 interface EventData {
   email: string;
@@ -91,15 +92,19 @@ const Signin: React.FC = () => {
       ...prevData,
       [name]: value
     }));
-  };
+  }; '/homeComponent'
 
   return (
-    <div className=" grid-cols-2  h-[100svh]">
-      <div className="w-[10rem] mx-[2rem]">
+    <div className="   h-[100svh] flex">
+      
+      <HomeComponent/>
+      
+      <div className="grid-cols-2  w-[50%]">
+      {/* <div className="w-[5rem] mx-[2rem]">
         <img src={SailLogo} alt="SailLogo" />
-      </div>
+      </div> */}
 
-      <div className="  justify-center m-auto my-[4rem] items-center bg-white w-[25rem]">
+      <div className="  justify-center mx-auto my-[10rem] items-center bg-white w-[19.9rem]">
         <div className="text-center  text-2xl font-bold">
           <h1>Sign In</h1>
         </div>
@@ -127,7 +132,7 @@ const Signin: React.FC = () => {
                       type="email"
                       id="email"
                       placeholder="Email Address"
-                      className="py-3"
+                      className="py-3 rounded-3xl"
                     />
                   </Form.Item>
                 </Col>
@@ -146,9 +151,9 @@ const Signin: React.FC = () => {
                       onChange={handleInputChange}
                       name="password"
                       placeholder="Password"
-                      type="text"
+                      type="password"
                       id="password"
-                      className="py-3"
+                      className="py-3 rounded-3xl"
                     />
                   </Form.Item>
                 </Col>
@@ -160,15 +165,15 @@ const Signin: React.FC = () => {
                     loading={loading}
                     type="primary"
                     htmlType="submit"
-                    className="bg-[#134c98] flex items-center justify-center py-5"
+                    className="rounded-2xl bg-[#134c98] flex items-center justify-center py-5"
                     block
                   >
                     Sign In
                   </Button>
                 </Col>
                 <Col span={24}>
-                <Link to={"/signup"}>
-                  <Button
+                <div >
+                  {/* <Button
                     
                     type="primary"
                     htmlType="button"
@@ -176,14 +181,16 @@ const Signin: React.FC = () => {
                     block
                   >
                     Create new account
-                  </Button>
-                  </Link>
+                  </Button> */}
+                  <p className="ml-[1rem] mt-[2rem]">Don't have an accont yet? <Link to={"/signup"} className="text-[#75C2F6]">SIGN UP HERE</Link></p>
+                  </div>
                 </Col>
             
               </Row>
             </Form>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
