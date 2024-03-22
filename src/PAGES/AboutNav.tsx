@@ -1,7 +1,7 @@
 import { FC } from "react";
-import Footer from "./Footer";
-import AboutUsNav from "./AboutUsNav";
-import HeaderNav from "./HeaderNav";
+import Footer from "../components/Footer";
+import AboutUsNav from "../components/AboutUsNav";
+import HeaderNav from "../components/HeaderNav";
 
 
 const AboutNav: FC = () => {

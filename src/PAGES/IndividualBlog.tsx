@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import HeaderNav from "./HeaderNav";
-import Footer from "./Footer";
+import HeaderNav from "../components/HeaderNav";
+import Footer from "../components/Footer";
 import face from "../images/face.svg"
 import twiter from "../images/twiter.svg"
 

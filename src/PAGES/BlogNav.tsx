@@ -1,6 +1,6 @@
 import { FC } from "react";
-import HeaderNav from "./HeaderNav";
-import Footer from "./Footer";
+import HeaderNav from "../components/HeaderNav";
+import Footer from "../components/Footer";
 import {Link} from "react-router-dom"
 
 const BlogNav: FC = () => {
