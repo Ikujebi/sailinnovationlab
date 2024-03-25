@@ -55,16 +55,16 @@ const HomeComponent :FC = () => {
     
      
   return (
-    <div className="bg-[#184c94] h-screen w-[49.9%] karla">
+    <div className="bg-[#184c94]  h-screen w-[49.9%] karla xl:pl-[10%] 2xl:pl-[10%] ">
         <header>
           <img src={logo} alt="sail logo" className="p-[1.7rem] w-[17rem]" />
         </header>
-        <section className="ml-3 mt-[9rem] text-white xl:flex xl:flex-col xl:justify-end xl:items-end  xl:mr-[2rem]">
+        <section className="ml-3 mt-[9rem] text-white xl:flex xl:flex-col xl:justify-center xl:items-center  xl:mr-[2rem]">
           <div>
-            <div className="bg-white text-black flex justify-center items-center rounded-2xl h-[1.5rem] w-[10rem] md:w-[24rem] lg:w-[24rem] xl:w-[24rem] 2xl:w-[24rem] md:text-[1.15rem]  lg:text-[1.15rem]  xl:text-[1.15rem]  2xl:text-[1.15rem]  text-[.58rem]">
+            <div className="bg-white text-black flex justify-center items-center rounded-2xl h-[1.5rem] w-[10rem] md:w-[20rem] lg:w-[22rem] xl:w-[22rem] 2xl:w-[24rem] md:text-[1.15rem]  lg:text-[1.15rem]  xl:text-[1.15rem]  2xl:text-[1.15rem]  text-[.58rem]">
               <h5>WELCOME TO SAIL INNOVATION LAB</h5>
             </div>
-            <article className=" md:text-[2.3rem]  lg:text-[2.3rem]  xl:text-[2.3rem]  2xl:text-[2.3rem]  text-[.78rem] font-extrabold mt-8 mb-6">
+            <article className=" md:text-[2.3rem]  lg:text-[2.3rem]  xl:text-[2.6rem]  2xl:text-[3rem]  text-[.78rem] font-extrabold mt-8 mb-6">
               <h5>
                 Where{" "}
                 <span

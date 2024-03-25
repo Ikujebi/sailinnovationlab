@@ -1,4 +1,5 @@
-import { useEffect,  useState,FC } from "react";
+import { useEffect, useRef, useState, FC } from "react";
+import anime, { AnimeInstance } from "animejs";
 import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -15,7 +16,7 @@ import HomeComponent from "../components/HomeComponent";
 
 
 const Home: FC = () => {
-  
+  const textRef = useRef<HTMLDivElement | null>(null);
 
   const pic1 =
     "https://sailab.ng/wp-content/uploads/2023/10/Group-1000004131.png";
@@ -69,69 +70,112 @@ const Home: FC = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true, 
-    autoplaySpeed: 5000, 
+    autoplay: true,
+    autoplaySpeed: 5000,
   };
 
-  
+  useEffect(() => {
+    const strings = ["Innovation", "Dreams", "Creativity!", "Ideas"];
 
- 
+    let currentStringIndex = 0;
+
+    const updateTextContent = () => {
+      if (textRef.current) {
+        textRef.current.textContent = strings[currentStringIndex];
+        currentStringIndex = (currentStringIndex + 1) % strings.length;
+      }
+    };
+
+    const textAnimation: AnimeInstance = anime({
+      targets: textRef.current,
+      translateY: ["-1rem", 0],
+      opacity: [0, 1],
+      easing: "easeInOutQuad",
+      duration: 2500, // Adjust the duration for a slower transition
+      complete: () => {
+        // Start the exit animation after the entrance is complete
+        anime({
+          targets: textRef.current,
+          translateY: [0, "1rem"],
+          opacity: [1, 0],
+          easing: "easeInOutQuad",
+          duration: 2500, // Adjust the duration for a slower exit
+          complete: updateTextContent, // Call the update function after the exit animation
+        });
+      },
+    });
+
+    textAnimation.restart();
+
+    // Update strings every 3 seconds
+    const stringChangeInterval = setInterval(() => {
+      textAnimation.restart();
+    }, 3000);
+
+    // Cleanup on unmount
+    return () => {
+      clearInterval(stringChangeInterval);
+      textAnimation.pause();
+    };
+  }, []);
+
+
 
   return (
     <div className="karla">
-    <div className="flex ">
-      <HomeComponent/>
-      <div className="white-bg w-[50%] mr-10 ">
-        <HeaderNav margin/>
-        <div
-          id="services"
-          className="flex justify-center align-center px-2 mt-[7rem]"
-        >
-          <div className="container">
-            <Slider {...sliderSettings}>
-              {slides.map((item, itemIndex) => (
-                <motion.div
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  variants={cardVariants}
-                  transition={{ duration: 0.5 }}
-                  key={itemIndex}
-                >
-                  <img
-                    src={item.image}
-                    alt="service"
-                    className="w-full  px-[3rem] 2xl:px-[7rem] mb-4 xl:h-[40rem] 2xl:h-[40rem] lg:h-[30rem] md:h-[33rem] h-[8rem]"
-                  />
-                </motion.div>
-              ))}
-            </Slider>
+      <div className="block md:flex xl:flex 2xl:flex">
+        <HomeComponent />
+        <div className="white-bg w-[50%] mr-10 ">
+          <HeaderNav margin />
+          <div
+            id="services"
+            className="flex justify-center align-center px-2 mt-[7rem]"
+          >
+            <div className="container">
+              <Slider {...sliderSettings}>
+                {slides.map((item, itemIndex) => (
+                  <motion.div
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    variants={cardVariants}
+                    transition={{ duration: 0.5 }}
+                    key={itemIndex}
+                  >
+                    <img
+                      src={item.image}
+                      alt="service"
+                      className="w-full  px-[3rem] 2xl:px-[7rem] mb-4 xl:h-[40rem] 2xl:h-[40rem] lg:h-[30rem] md:h-[33rem] h-[8rem]"
+                    />
+                  </motion.div>
+                ))}
+              </Slider>
+            </div>
           </div>
         </div>
       </div>
-      </div>
       <section className="">
         <header className="flex justify-center">
-      <About/>
-      </header>
+          <About />
+        </header>
       </section>
       <section>
-        <Services/>
+        <Services />
       </section>
       <section>
-        <Achievement/>
+        <Achievement />
       </section>
       <section>
-        <Method/>
+        <Method />
       </section>
       <section className="">
-        <Programs/>
+        <Programs />
       </section>
       <section className="mt-[10rem]">
-        <Testimonials/>
+        <Testimonials />
       </section>
       <section className="lg:mt-[3rem] xl:mt-[15rem] 2xl:mt-[15rem]">
-        <Footer/>
+        <Footer />
       </section>
     </div>
   );
