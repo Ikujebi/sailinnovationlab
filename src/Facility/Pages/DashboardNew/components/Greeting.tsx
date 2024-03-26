@@ -33,7 +33,7 @@ function Greetings() {
     styles.fontSize = 20;
     IconComponent = <PiSunBold />;
   } else {
-    timeOfDay = "night";
+    timeOfDay = "Evening";
     styles.color = "#04756F";
     IconComponent = <FcNightLandscape />;
   }

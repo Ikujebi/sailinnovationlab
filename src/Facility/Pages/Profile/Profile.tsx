@@ -1,4 +1,4 @@
-import { FC, useState, useRef,useCallback } from "react";
+import { FC, useState, useRef } from "react";
 import { useDropzone } from "react-dropzone";
 import Webcam from "react-webcam"; // Import the Webcam component
 import useGetUserInfo from "../../../hooks/useGetUserInfo";
@@ -13,15 +13,12 @@ const Profile: FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const webcamRef = useRef<Webcam>(null) // Create a ref for the Webcam component
   const [imageSrc, setImageSrc] = useState<string>(defaultImage);
-  const [mirrored, setMirrored] = useState(false);
-
 
   const onDrop = async (acceptedFiles: File[]) => {
     if (acceptedFiles.length === 0) return;
 
     setUploading(true);
     try {
-
       const file = acceptedFiles[0];
       const imageUrl = URL.createObjectURL(file);
       setImageSrc(imageUrl);
@@ -44,20 +41,45 @@ const Profile: FC = () => {
         fileInputRef.current.click();
       }
     } else if (captureMethod === "webcam") {
-      setMirrored (prevState => !prevState);
       captureImageFromWebcam();
     }
   };
 
-  const captureImageFromWebcam = useCallback(() => {
-    const imageSrc = webcamRef.current?.getScreenshot();
-    if (imageSrc) {
-      setImageSrc(imageSrc);
+  
+
+  const captureImageFromWebcam = async () => {
+    console.log("Capturing image from webcam...");
+    
+    if (!webcamRef.current) {
+      console.error("Webcam reference is null.");
+      return;
     }
-  }, [webcamRef]);
+  
+    try {
+      const imageSrc = await webcamRef.current.getScreenshot();
+      console.log("Captured image:", imageSrc);
+      if (imageSrc) {
+        setImageSrc(imageSrc);
+        console.log("Updated imageSrc state:", imageSrc);
+      } else {
+        console.error("Failed to capture image from webcam.");
+      }
+    } catch (error) {
+      console.error("Error capturing image from webcam:", error);
+      // Handle error if necessary
+    }
+  };
+  
+  
 
   const handleToggleCaptureMethod = () => {
-    setCaptureMethod(prevMethod => (prevMethod === "file" ? "webcam" : "file"));
+    setCaptureMethod(prevMethod => {
+      if (prevMethod === "file") {
+        // Reset imageSrc when switching to webcam capture method
+        setImageSrc(defaultImage);
+      }
+      return prevMethod === "file" ? "webcam" : "file";
+    });
   };
 
   if (loading) {
@@ -67,11 +89,7 @@ const Profile: FC = () => {
   if (!userInfo) {
     return <div>No user information available</div>;
   }
-
-//   const handleMirror= () =>{
-// setMirrored (prevState => !prevState);
-//   }
-
+  console.log("webcamRef:", webcamRef.current);
   return (
     <div className="mx-9 m-3 flex gap-[4rem] justify-center">
       <div className="flex flex-col justify-center items-center gap-4">
@@ -86,17 +104,12 @@ const Profile: FC = () => {
             />
           ) : (
             <Webcam
-  height={600}
-  width={600}
-  mirrored={mirrored}
-  ref={webcamRef}
-  screenshotFormat="image/jpeg" // Specify the format of the screenshot
-/>
-          
-            
+              height={600}
+              width={600}
+              ref={webcamRef}
+              screenshotFormat="image/jpeg" // Specify the format of the screenshot
+            />
           )}
-          
-         
           <label onClick={handleClickChangePicture}>
             <p id="changeProfilePicture" className="flex gap-2 cursor-pointer">
               Change profile picture{" "}
