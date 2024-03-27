@@ -1,4 +1,4 @@
-import { FC, useState, useRef } from "react";
+import { FC, useState, useRef,useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import Webcam from "react-webcam"; // Import the Webcam component
 import useGetUserInfo from "../../../hooks/useGetUserInfo";
@@ -13,6 +13,10 @@ const Profile: FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const webcamRef = useRef<Webcam>(null) // Create a ref for the Webcam component
   const [imageSrc, setImageSrc] = useState<string>(defaultImage);
+
+
+
+
 
   const onDrop = async (acceptedFiles: File[]) => {
     if (acceptedFiles.length === 0) return;
@@ -35,17 +39,36 @@ const Profile: FC = () => {
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
-  const handleClickChangePicture = () => {
-    if (captureMethod === "file") {
+  const handleToggleCaptureMethod = () => {
+    setCaptureMethod(prevMethod => {
+      if (prevMethod === "file") {
+        // Reset imageSrc when switching to webcam capture method
+        setImageSrc(imageSrc);
+      }
+      const newCaptureMethod = prevMethod === "file" ? "webcam" : "file";
+      handleClickChangePicture(newCaptureMethod); // Call handleClickChangePicture with the new capture method
+    return newCaptureMethod;
+    });
+  };
+  
+  const handleClickChangePicture = (method?: "file" | "webcam") => {
+    if (!method) method = captureMethod as "file" | "webcam";  // If no method is provided, use the current captureMethod
+    if (method === "file") {
       if (fileInputRef.current) {
         fileInputRef.current.click();
       }
-    } else if (captureMethod === "webcam") {
+    } else if (method === "webcam" && webcamRef.current) {
       captureImageFromWebcam();
     }
   };
 
+ 
   
+  useEffect(() => {
+    if (webcamRef.current) {
+      console.log("Webcam reference is available:", webcamRef.current);
+    }
+  }, []); 
 
   const captureImageFromWebcam = async () => {
     console.log("Capturing image from webcam...");
@@ -56,6 +79,8 @@ const Profile: FC = () => {
     }
   
     try {
+      console.log("Captured image:");
+      
       const imageSrc = await webcamRef.current.getScreenshot();
       console.log("Captured image:", imageSrc);
       if (imageSrc) {
@@ -72,15 +97,7 @@ const Profile: FC = () => {
   
   
 
-  const handleToggleCaptureMethod = () => {
-    setCaptureMethod(prevMethod => {
-      if (prevMethod === "file") {
-        // Reset imageSrc when switching to webcam capture method
-        setImageSrc(defaultImage);
-      }
-      return prevMethod === "file" ? "webcam" : "file";
-    });
-  };
+
 
   if (loading) {
     return <Spin spinning={loading} />;
@@ -104,13 +121,13 @@ const Profile: FC = () => {
             />
           ) : (
             <Webcam
-              height={600}
-              width={600}
+              height={200}
+              width={200}
               ref={webcamRef}
               screenshotFormat="image/jpeg" // Specify the format of the screenshot
             />
           )}
-          <label onClick={handleClickChangePicture}>
+          <label onClick={() => handleClickChangePicture()}>
             <p id="changeProfilePicture" className="flex gap-2 cursor-pointer">
               Change profile picture{" "}
               <span className="rotate-icon">
@@ -119,7 +136,10 @@ const Profile: FC = () => {
             </p>
           </label>
         </div>
-        <button className="p-2 text-gray-100 bg-[#713f12] rounded-2xl" onClick={handleToggleCaptureMethod}>
+        <button type="button" className="p-2 text-gray-100 bg-[#713f12] rounded-2xl"  onClick={e => {
+    e.stopPropagation(); // Stop event propagation to prevent opening the file dialog
+    handleToggleCaptureMethod();
+  }}>
           {captureMethod === "file" ? "Use Webcam" : "CAPTURE"}
         </button>
         <hr className="w-full mt-[12px]" />
