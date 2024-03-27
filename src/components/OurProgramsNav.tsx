@@ -201,7 +201,7 @@ const OurProgramsNav: FC = () => {
                 id="white"
                 className="bg-white h-[5rem] items-center hover:bg-[#184c94] font-normal whitespace-wrap hover:text-[white] text-[1.2rem] mt-[6rem] w-[11rem] flex justify-center"
               >
-                <Link to={registrationForm}>
+                <Link to={registrationForm} target="blank">
                   <p>Indicate Interest</p>
                 </Link>
               </div>
