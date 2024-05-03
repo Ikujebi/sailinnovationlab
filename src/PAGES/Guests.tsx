@@ -97,9 +97,62 @@ const Guest: FC = () => {
       const Identifier = response.data.user.visitor._id
       console.log(Identifier);
       
+      // Get the userQR from the response data
+      const userQR = response.data.qrCode;
+  console.log(userQR);
+  
+      // Fetch the QR code using the obtained userQR
+      // const qrCode = await axios.post(userQR, { id: Identifier } )
+      // const {  imageUrl } = qrCode.data.image;
+      //  setIdentifier(id);
+       setImageURL(userQR);
+  
+      // Just showing the modal for now
+      setModalVisible(true);
+    } catch (error: any) {
+      console.error("Error submitting form:", error);
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        const { status, data } = error.response;
+        if (status === 400 && data.error === "email_exists") {
+          message.error("Email already exists");
+        } else {
+          message.error(`Server error: ${status} - ${data.message}`);
+        }
+      } else if (error.request) {
+        // The request was made but no response was received
+        message.error("Network error: No response received from the server.");
+      } else {
+        // Something happened in setting up the request that triggered an error
+        message.error("An unexpected error occurred. Please try again later.");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+   /* const handleSubmit = async () => {
+    const formUrl = import.meta.env.VITE_GUEST_FORM;
+    try {
+      setLoading(true);
+      if (!localState.sex) {
+        throw new Error("Please select a gender.");
+      }
+      console.log("Data being sent:", localState);
+      const response = await axios.post(formUrl, localState);
+      console.log("Form submitted!", response.data);
+      
+      // Displaying the response data
+      message.success("Form submitted!");
+      console.log("Response:", response.data);
+  
+      // If the response contains an identifier and image URL, you can set them in state
+      const Identifier = response.data.user.visitor._id
+      console.log(Identifier);
+      
       const userQR = import.meta.env.VITE_GUEST_Code
-      const qrCode = await axios.get(userQR,{ params: { id: Identifier } })
-      const {  imageUrl } = qrCode.data;
+      const qrCode = await axios.post(userQR, { id: Identifier } )
+      const {  imageUrl } = qrCode.data.image;
       //  setIdentifier(id);
        setImageURL(imageUrl);
   
@@ -125,7 +178,7 @@ const Guest: FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }; */
 
 
   return (

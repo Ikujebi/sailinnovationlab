@@ -123,7 +123,7 @@ const Home: FC = () => {
 
   return (
     <div className="karla">
-      <div className="block md:flex xl:flex 2xl:flex">
+      <div className="block md:flex xl:flex 2xl:flex w-[100%]">
         <HomeComponent />
         <div className="white-bg w-[50%] mr-10 ">
           <HeaderNav margin />

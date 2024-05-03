@@ -5,6 +5,8 @@ import { Button, Col, Form, Input, Row } from "antd";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from 'axios'
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash  } from "react-icons/fa";
 
 interface SignInInfo {
   email: string;
@@ -12,6 +14,13 @@ interface SignInInfo {
 }
 
 const Signin:FC = () => {
+  const OpenEye = <FaEye />
+    const CloseEye = <FaEyeSlash  />
+    const [showPassword, setShowPassword] = useState(false); // Step 1
+
+    const togglePasswordVisibility = () => {
+        setShowPassword((prev) => !prev); 
+    };
   const [loading, setLoading] = useState<boolean>(false);
   const [_message, setMessage] = useState<string>("");
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
@@ -127,14 +136,23 @@ const Signin:FC = () => {
                     validateStatus={errors.email ? 'error' : ''}
                     help={errors.email}
                   >
+                    <div className="relative">
                     <Input
                       onChange={handleInputChange}
                       name="email"
-                      type="email"
+                      type={showPassword ? "text" : "password"}
                       id="email"
                       placeholder="Email Address"
                       className="py-3"
-                    />
+                    /> 
+                    <button
+                            type="button"
+                            className="absolute top-1/2 right-2 transform -translate-y-1/2  "
+                            onClick={togglePasswordVisibility}
+                        >
+                            {showPassword ? OpenEye : CloseEye}
+                        </button>
+                    </div>
                   </Form.Item>
                 </Col>
 

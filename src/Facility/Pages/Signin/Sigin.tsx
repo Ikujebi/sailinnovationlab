@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../../constants/baseUrl";
 import toast from "react-hot-toast";
 import HomeComponent from "../../../components/HomeComponent";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash  } from "react-icons/fa";
 
 interface EventData {
   email: string;
@@ -12,6 +14,13 @@ interface EventData {
 }
 
 const Signin: React.FC = () => {
+  const OpenEye = <FaEye />
+  const CloseEye = <FaEyeSlash  />
+  const [showPassword, setShowPassword] = useState(false); // Step 1
+
+  const togglePasswordVisibility = () => {
+      setShowPassword((prev) => !prev); 
+  };
   const [loading, setLoading] = useState<boolean>(false);
   const [loginData, setLoginData] = useState<EventData>({ email: "", password: "" });
   const navigate = useNavigate();
@@ -147,14 +156,24 @@ const Signin: React.FC = () => {
                       },
                     ]}
                   >
+
+                    <div className="relative">
                     <Input.Password
                       onChange={handleInputChange}
                       name="password"
                       placeholder="Password"
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       id="password"
                       className="py-3 rounded-3xl"
                     />
+                      <button
+                            type="button"
+                            className="absolute top-1/2 right-2 transform -translate-y-1/2  "
+                            onClick={togglePasswordVisibility}
+                        >
+                            {showPassword ? OpenEye : CloseEye}
+                        </button>
+                    </div>
                   </Form.Item>
                 </Col>
                 <Link to={"/forgotPassword"} className="text-sm font-normal mb-2 pl-[1rem] text-[#75C2F6]">

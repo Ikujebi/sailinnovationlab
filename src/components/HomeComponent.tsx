@@ -55,7 +55,7 @@ const HomeComponent :FC = () => {
     
      
   return (
-    <div className="bg-[#184c94]  h-screen w-[49.9%] karla xl:pl-[10%] 2xl:pl-[10%] ">
+    <div className="bg-[#184c94]  h-screen w-[99.9%] karla xl:pl-[10%] 2xl:pl-[10%] md:w-[49.9%] xl:w-[49.9%] 2xl:w-[49.9%]">
         <header>
           <img src={logo} alt="sail logo" className="p-[1.7rem] w-[17rem]" />
         </header>
@@ -83,14 +83,14 @@ const HomeComponent :FC = () => {
             </div>
           </div>
           <article className=" md:w-[15rem] lg:w-[15rem] xl:w-[15rem] 2x:lw-[15rem] w-[9rem] md:text-[1.15rem]  lg:text-[1.15rem]  xl:text-[1.15rem]  2xl:text-[1.15rem]  text-[.58rem]">
-            <p className=" text-black flex justify-center font-semibold  bg-[#ffcc4c]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white">
+            <Link to={"/programNav"} className=" text-black flex justify-center font-semibold  bg-[#ffcc4c]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white">
               OUR PROGRAMS{" "}
               <img
                 src={arrow}
                 alt="arrow"
                 className=" ml-2 mt-[.44rem] w-4 h-3"
               />
-            </p>
+            </Link>
             <Link
               to="/guest"
               className=" text-black flex justify-center font-semibold  bg-[#fccc4c]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white"

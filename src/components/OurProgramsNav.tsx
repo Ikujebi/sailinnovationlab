@@ -127,7 +127,7 @@ const OurProgramsNav: FC = () => {
     };
   }, [index, progs]);
 
-  const registrationForm = "https://student-portal-form.vercel.app/";
+  const registrationForm = "https://student-portal-form-av4sjfb3e-ikujebi.vercel.app/";
 
   return (
     <div className="mt-[1.5rem] text-gray-800 karla">
