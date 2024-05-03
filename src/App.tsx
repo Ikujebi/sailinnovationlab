@@ -28,6 +28,7 @@ const  Events=  lazy(() => import ("./Facility/Pages/Events/Events")) ;
 const  Tasks=  lazy(() => import ("./Facility/Pages/Tasks/Tasks")) ;
 const  TaskQuestion=  lazy(() => import ("./Facility/Pages/Tasks/TaskQuestions")) ;
 const  HomeComponent=  lazy(() => import ("./components/HomeComponent")) ;
+const  QRCodeScanner=  lazy(() => import ("./PAGES/qrCode/QrCode")) ;
 
 
 
@@ -71,6 +72,10 @@ function App () {
     {
       element: <HomeComponent />,
       path: '/homeComponent'
+    },
+    {
+      element: <QRCodeScanner />,
+      path: '/qRCodeScanner'
     },
     {
       element: <IndividualBlog1 />,
@@ -141,6 +146,10 @@ function App () {
         {
           element: <UpdateEvents />,
           path: '/dashboard/details/updatedEvent'
+        },
+        {
+          element: <QRCodeScanner />,
+          path: '/dashboard/details/qRCodeScanner'
         },
         {
           element: <Events />,

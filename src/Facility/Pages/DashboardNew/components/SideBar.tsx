@@ -64,6 +64,11 @@ const Sidebar: React.FC = () => {
       link: "/dashboard/details/events",
     },
     {
+      name: " QrCode",
+      icon: <MdEvent />,
+      link: "/dashboard/details/qRCodeScanner",
+    },
+    {
       name: " Tasks",
       icon: <GrTask />,
       link: "/dashboard/details/tasks",
