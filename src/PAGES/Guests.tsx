@@ -5,6 +5,8 @@ import logo from "../images/sail_logo-removebg-preview.png";
 import stem from "../images/stem.jpg";
 import tech from "../images/tech talent.png";
 import data from "../images/datascience.png";
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 interface GuestState {
 
@@ -179,6 +181,29 @@ const Guest: FC = () => {
       setLoading(false);
     }
   }; */
+
+  const downloadPDF = () => {
+    const modalImage = document.getElementById('modal-image');
+  
+    if (!modalImage) return;
+  
+    html2canvas(modalImage).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF();
+      pdf.addImage(imgData, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
+      pdf.save('qr_code.pdf');
+    });
+  };
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
 
   return (
@@ -375,11 +400,21 @@ const Guest: FC = () => {
 
       <Modal
         title="QR Code"
-        open={modalVisible}
+        visible={modalVisible}
         onCancel={() => setModalVisible(false)}
-        footer={null}
+        footer={[
+          <button
+            key="download-pdf"
+            onClick={downloadPDF}
+            className="w-[8rem] rounded bg-[#48c4b4] p-2"
+          >
+            Download PDF
+          </button>
+        ]}
       >
-        <img src={imageURL} alt="QR Code" style={{ maxWidth: "100%" }} />
+        <div id="modal-image " >
+          <img src={imageURL} alt="QR Code" className="flex justify-center items-center " style={{ maxWidth: "100%" }} />
+        </div>
       </Modal>
     </div>
   );
