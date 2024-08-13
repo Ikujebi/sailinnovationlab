@@ -143,7 +143,7 @@ const Signin: FC = () => {
                       ]}
                     >
                       <div className="relative">
-                        <Input.Password
+                        <Input
                           onChange={handleInputChange}
                           name="password"
                           placeholder="Password"
