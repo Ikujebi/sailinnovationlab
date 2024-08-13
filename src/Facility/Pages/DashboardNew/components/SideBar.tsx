@@ -140,7 +140,7 @@ const Sidebar: React.FC = () => {
           ))}
           
         </ul>
-        <div className="pb-[-5rem]">
+        <div className="pb-[-5rem] pt-[5rem]">
           <LogoutButton />
           </div>
       </div>
