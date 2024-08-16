@@ -85,15 +85,22 @@ const Sidebar: React.FC = () => {
   ];
 
   return (
-    <div className="border-r-[#e9e6e6] border fixed h-screen px-1 ">
-      <div className=" bg-yellow-300 rounded-3xl mt-3">
+    <div className="border-r-[#e9e6e6] border fixed h-screen ">
+      <div className=" bg-gray-300  pt-3 px-1">
       <div className="flex flex-wrap p-4 gap-4 text-[--green] items-center">
-        <div className="bg-[--green] h-[3rem] w-[3rem] rounded-md"></div>
+        <div className="bg-[--green] flex gap-[3rem] h-[3rem] w-[3rem] rounded-md">
         <div>
           <h1 className="text-lg font-semibold md:text-2xl">Admin</h1>
           <p className="text-xs font-normal">DASHBOARD</p>
         </div>
+        <div id="closeSide" className="md:block xl:block lg:block 2xl:block hidden">
+          <p className="pl-2"> &larr;</p>
+          <span>close</span>
+       
+        </div>
       </div>
+      </div>
+      
 
       <div className="flex flex-col gap-[10rem]">
         <ul className={`mt-[2.4rem] mx-auto grid` }>
@@ -140,7 +147,7 @@ const Sidebar: React.FC = () => {
           ))}
           
         </ul>
-        <div className="pb-[-5rem] pt-[5rem]">
+        <div className="pb-[-5rem] pt-[2.6rem]">
           <LogoutButton />
           </div>
       </div>
