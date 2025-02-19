@@ -7,8 +7,9 @@ import Greetings from "./Greeting";
 import useApplicantInfo from "../../../../hooks/useApplicantInfo";
 import useFetchAprrovedParticipants from "../../../../hooks/useFetchAprrovedParticipants";
 import useFetchDisapprovedParticipants from "../../../../hooks/useFetchDisapprovedParticipants"
-
-import { Calendar } from "antd";
+import useFetchPendingParticipants from "../../../../hooks/useFetchPendingParticipants"
+import BigChart from "./Bigchart";
+import { Calendar,Spin } from "antd";
 
 
 
@@ -16,6 +17,7 @@ const Details: FC = () => {
   const { participantsInfo } = useGetParticipantInfo();
   const { applicantsantsInfo: applicantsantsInfo, loading: _applicantLoading } = useApplicantInfo()// Use the useApplicantInfo hook
  const {approvedParticipants:approvedParticipants, loading: _approvedParticipantsLoading} = useFetchAprrovedParticipants()
+ const {pendingParticipants:pendingParticipants, loading: _pendingParticipantsLoading} = useFetchPendingParticipants()
  const {rejectedParticipantsInfo:rejectedParticipantsInfo, loading: _rejectedParticipantsInfoLoading} = useFetchDisapprovedParticipants()
 
  
@@ -83,8 +85,12 @@ const clockOuts = participantsInfo?.filter((participant) => participant.clockInS
     },
     
   ];
+  const applicantChartData = [
+    { name: "Approved", value: approvedParticipants?.length },
+    { name: "Pending", value: pendingParticipants?.length },
+  ];
  
-  
+  const isLoading = _approvedParticipantsLoading || _applicantLoading;
 
   return (
     <div className="">
@@ -122,6 +128,12 @@ const clockOuts = participantsInfo?.filter((participant) => participant.clockInS
       <div>
 {/* <ClockInButton/> */}
       </div>
+
+      <div className="mt-[10rem] w-full md:w-2/5 flex justify-center">
+  {isLoading ? <Spin size="large" /> : <BigChart data={applicantChartData} />}
+</div>
+
+
       <div className="mt-[10rem]">
         <div className="flex flex-wrap lg:flex-nowrap gap-[2rem] md:gap-[4rem] pl-4">
           <RecentClockIn participantsInfo={present} />
