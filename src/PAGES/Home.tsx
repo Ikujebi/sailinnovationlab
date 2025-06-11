@@ -122,16 +122,16 @@ const Home: FC = () => {
 
 
   return (
-    <div className="karla">
-      <div className="block md:flex xl:flex 2xl:flex w-[100%]">
+    <div className="karla w-full max-w-screen overflow-x-hidden">
+      <div className="block md:flex xl:flex 2xl:flex ">
         <HomeComponent />
-        <div className="white-bg w-[50%] mr-10 ">
+        <div className="white-bg md:w-[50%] mr-10 ">
           <HeaderNav margin />
           <div
             id="services"
             className="flex justify-center align-center px-2 mt-[7rem]"
           >
-            <div className="container">
+            <div className="container  ">
               <Slider {...sliderSettings}>
                 {slides.map((item, itemIndex) => (
                   <motion.div
@@ -145,7 +145,7 @@ const Home: FC = () => {
                     <img
                       src={item.image}
                       alt="service"
-                      className="w-full  px-[3rem] 2xl:px-[7rem] mb-4 xl:h-[40rem] 2xl:h-[40rem] lg:h-[30rem] md:h-[33rem] h-[8rem]"
+                      className="w-full md:px-[3rem] 2xl:px-[7rem] mb-4 xl:h-[40rem] 2xl:h-[40rem] lg:h-[30rem] md:h-[33rem] h-[15rem]"
                     />
                   </motion.div>
                 ))}

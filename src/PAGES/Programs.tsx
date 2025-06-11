@@ -70,8 +70,8 @@ const Programs: FC = () => {
         </p>
       </div>
       <div>
-        <div className="mx-[auto] flex justify-center ">
-          <div className="grid grid-cols-2 ">
+        <div className="mx-[auto] flex justify-center mt-[2rem] md:mt-[1rem]">
+          <div className="md:grid grid-cols-2 ">
             {cards.map((card, index) => (
               <CustomCard key={index} {...card} />
             ))}

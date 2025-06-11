@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 const About = () => {
   return (
     <div className=" flex flex-col justify-center items-center mt-[3rem] ">
-      <section className="flex gap-6">
-        <article className="w-[49.9%] ml-7">
+      <section className="md:flex gap-6">
+        <article className="md:w-[49.9%] ml-7">
           <img src={ab} alt="" className="w-[80%]" />
         </article>
-        <article className="w-[50%]">
+        <article className="md:w-[50%]">
           <header className=" bg-[#184c94] text-white rounded-xl py-1 px-4 flex justify-center w-[8rem]">
             <h2>ABOUT US</h2>
           </header>
