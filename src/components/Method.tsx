@@ -11,13 +11,13 @@ const Method = () => {
   return (
     <div className="mt-[4rem] mx-2 ">
       <header className="flex justify-center text-[1.5rem] font-bold">
-        <h1>
+        <h1 className="text-[.95rem] md:text-[1rem]">
           We applied the methods of design research to allow us to do the
           following:
         </h1>
       </header>
       <main className="flex justify-center lg:w-[70%] xl:w-[70%]  mx-auto ">
-        <section className="grid grid-cols-2  mx-[auto] gap-[1rem]">
+        <section className="md:grid grid-cols-2  mx-[auto] gap-[1rem]">
           <div className="flex my-[1rem]">
             <img src={design} alt="" />
             <div className="ml-4">
@@ -78,12 +78,12 @@ const Method = () => {
             </div>
           </div>
 
-          <div className="bg-[#ffcc4a] rounded-2xl">
+          <div className="bg-[#ffcc4a] rounded-2xl pb-1">
             <h3 className="m-5 font-bold text-[1.1rem]">
               If you would like to read more about our findings. Kindly click
               the button below
             </h3>
-            <button className="bg-white p-[.7rem] m-[1rem] flex items-center gap-2 hover:bg-[#184c94] hover:text-white">
+            <button className="bg-white p-[.7rem] m-[1rem] mb-[1rem] flex items-center gap-2 hover:bg-[#184c94] hover:text-white">
               READ MORE 
               <span className="material-symbols-outlined hover:text-white"> arrow_right_alt</span>
             </button>
