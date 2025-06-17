@@ -35,8 +35,8 @@ const Achievement:FC = () => {
           </main>
         </div>
       </div>
-      <footer className="flex h-[45%]  flex justify-center mt-[-8rem] ">
-     <img src={achieve} alt="" className='md:w-[50rem] lg:w-[60rem] xl:w-[70rem] 2xl:w-[80rem] w-[20rem]  h-[46rem]'/>
+      <footer className="flex h-[40%]  flex justify-center mt-[-8rem] ">
+     <img src={achieve} alt="" className='md:w-[50rem] lg:w-[60rem] xl:w-[70rem] 2xl:w-[80rem] w-[20rem]  h-[41rem]'/>
       </footer>
     </div>
   );

@@ -34,7 +34,7 @@ const testimonials: FC = () => {
             </div> 
           </header>
 
-          <main className="text-[2.4rem] font-extrabold text-white mt-[3rem]">
+          <main className="md:text-[2.4rem] text-[1.6rem] font-extrabold text-white mt-[3rem]">
             <p>Lagos East Teachers'</p>
             <p>Fellowship Testimonial</p>
           </main>
@@ -58,7 +58,7 @@ const testimonials: FC = () => {
        
 
         <section className="flex">
-            <div className="bg-[#48c4b4] w-[7rem] md:w-[8.9rem] lg:w-[8.9rem] xl:w-[11rem] 2xl:w-[13rem] h-[10rem] xl:h-[12rem] 2xl:h-[13.1rem] ml-[.6rem] md:ml-[3.1rem] lg:ml-[4.1rem] xl:ml-[22.1rem] 2xl:ml-[22.1rem] mt-[-9.3rem] rounded-2xl">
+            <div className="bg-[#48c4b4] w-[7rem] md:w-[8.9rem] lg:w-[8.9rem] xl:w-[11rem] 2xl:w-[13rem] h-[10rem] xl:h-[12rem] 2xl:h-[13.1rem] ml-[.6rem] md:ml-[3.1rem] lg:ml-[4.1rem] xl:ml-[22.1rem] 2xl:ml-[22.1rem] mt-[-15.3rem] md:mt-[-9.3rem] rounded-2xl">
 
             </div>
 
