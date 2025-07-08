@@ -20,7 +20,7 @@ const FooterIcons = () => {
     ];
   
     return (
-      <div className="flex space-x-4  mt-5">
+      <div className="flex space-x-4  mt-5 mb-1">
         {icons.map((item, index) => (
           <svg
             key={index}

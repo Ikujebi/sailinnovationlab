@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const About = () => {
   return (
-    <div className=" flex flex-col justify-center items-center mt-[3rem] ">
+    <div className=" flex flex-col justify-center items-center mt-[3rem] p-2 md:p-0">
       <section className="md:flex gap-6">
         <article className="md:w-[49.9%] ml-7">
           <img src={ab} alt="" className="w-[80%]" />
@@ -14,7 +14,7 @@ const About = () => {
           <header className=" bg-[#184c94] text-white rounded-xl py-1 px-4 flex justify-center w-[8rem]">
             <h2>ABOUT US</h2>
           </header>
-          <main>
+          <main className="">
             <div className=" text-[3rem] font-extrabold">
               <h1>About the </h1>
               <h1>Innovation Lab</h1>

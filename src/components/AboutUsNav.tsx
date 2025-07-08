@@ -26,49 +26,52 @@ const AboutUsNav: FC = () => {
       </header>
       <main>
         <section className=" md:mx-5 mx-9 flex justify-center">
-          <img src={pik1} alt="" className="2xl:w-[63%]" />
+          <img src={pik1} alt="" className=" 2xl:w-[63%] md:h-auto h-[9rem]" />
         </section>
-        <div className="2xl:w-[100rem] mx-auto mt-[5rem]">
-          <section className="flex justify-center mx-auto md:mx-5 mt-[4rem] gap-3 lg:mx-[3rem] 2xl:mx-[15rem]">
-            <article>
-              <h2 className="font-bold text-[2.4rem] xl:mt-[2.8rem] 2xl:mt-[3rem]">
-                At SAIL Innovation Lab, our commitment runs deep.
-              </h2>
-              <p>
-                We’re on a mission to transform youth development and ignite
-                economic prosperity in the Lagos East Senatorial District. In
-                partnership with Co-Creation Hub, we’ve created a vibrant
-                community Innovation space dedicated to nurturing the young
-                talents of Lagos East.
-              </p>
-            </article>
-            <article className="md:w-[100rem]">
-              <img src={pik2} alt="" className="" />
-            </article>
-          </section>
-          <section className="flex justify-center mx-auto md:mx-5 mt-[4rem] gap-3 lg:mx-[3rem] 2xl:mx-[15rem]">
-            <article className="md:w-[100rem]">
-              <img src={pik3} alt="" className="" />
-            </article>
-            <article className="text-[1.06rem]">
-              <h2 className="font-bold text-[2.4rem] xl:mt-[2.8rem] 2xl:mt-[3rem]">
-                Our Aim
-              </h2>
-              <p>
-                SAIL’s aim is clear: to forge pathways to employment, spark
-                grassroots innovation, foster partnerships and networks that
-                drive economic growth and collaboratively tackle significant
-                social and business challenges within the Lagos East Senatorial
-                District.
-              </p>
+        <div className="2xl:w-[100rem] mx-auto mt-[5rem] p-5 md:0">
+        <section className="block md:flex justify-center mx-auto md:mx-5 mt-[4rem] gap-3 lg:mx-[3rem] 2xl:mx-[15rem]">
+    <article className="order-2 md:order-none">
+      <h2 className="font-bold text-[2.4rem] xl:mt-[2.8rem] 2xl:mt-[3rem]">
+        At SAIL Innovation Lab, our commitment runs deep.
+      </h2>
+      <p>
+        We're on a mission to transform youth development and ignite
+        economic prosperity in the Lagos East Senatorial District. In
+        partnership with Co-Creation Hub, we've created a vibrant
+        community Innovation space dedicated to nurturing the young
+        talents of Lagos East.
+      </p>
+    </article>
 
-              <p className="mt-[2.9rem]">
-                Within our space, we’ve cultivated an environment that feels
-                like a second home – one that’s comfortable, safe, and brimming
-                with opportunities for young people to thrive.
-              </p>
-            </article>
-          </section>
+    <article className="md:w-[100rem] order-1 md:order-none mt-5 md:mt-0">
+      <img src={pik2} alt="" />
+    </article>
+  </section>
+  <section className="flex flex-col-reverse md:flex-row justify-center mx-auto md:mx-5 mt-[4rem] gap-3 lg:mx-[3rem] 2xl:mx-[15rem]">
+  <article className="md:w-[100rem]">
+    <img src={pik3} alt="" className="w-full mt-5 md:mt-0" />
+  </article>
+  <article className="text-[1.06rem] md:mt-0">
+    <h2 className="font-bold text-[2.4rem] xl:mt-[2.8rem] 2xl:mt-[3rem]">
+      Our Aim
+    </h2>
+    <p>
+      SAIL's aim is clear: to forge pathways to employment, spark grassroots
+      innovation, foster partnerships and networks that drive economic growth
+      and collaboratively tackle significant social and business challenges
+      within the Lagos East Senatorial District.
+    </p>
+
+    <p id="2nd" className="mt-[2.9rem]">
+      Within our space, we've cultivated an environment that feels like a
+      second home - one that's comfortable, safe, and brimming with
+      opportunities for young people to thrive.
+    </p>
+  </article>
+
+  {/* Image second on mobile, first on desktop */}
+  
+</section>
         </div>
         <section style={{ backgroundImage: `url(${pik4})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
   className='mt-[3rem] h-[65svh]'>
@@ -80,7 +83,7 @@ const AboutUsNav: FC = () => {
       Discover More
       </h2>
       <p className="flex justify-center">Explore the diverse programs and initiatives that make up SAIL Innovation</p>
-      <p className="flex justify-center">Lab. Click below to learn more about how we’re shaping the future.</p>
+      <p className="flex justify-center">Lab. Click below to learn more about how we're shaping the future.</p>
       <div className="flex justify-center">
       <Link to={"/programNav"} className="w-[40%] text-black flex justify-center font-semibold  bg-[#ffcc4c]  p-4 mt-10 transition-transform hover:transform hover:-translate-y-3 hover:bg-white">
               OUR PROGRAMS{" "}

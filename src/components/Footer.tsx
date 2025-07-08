@@ -4,8 +4,8 @@ import FooterIcons from "./FooterIcons";
 const Footer: FC = () => {
   return (
     <div className="md:h-[60svh]  bg-[#383434] rubik pt-[3rem]  md:px-6 ">
-      <section className="flex justify-center gap-[2rem] md:gap-[5rem]  xl:gap-[15rem] 2xl:gap-[15rem]">
-        <article className="text-white  ">
+      <section className="flex justify-center m-auto gap-[1rem] md:gap-[5rem]  xl:gap-[15rem] 2xl:gap-[15rem]">
+        <article className="text-white ml-2 ">
           <div className="text-white flex ">
             <h2 className=" text-[2rem] font-bold xl:text-[3rem] 2xl:text-[2.5rem] 2xl:font-semibold">
               Join Us
@@ -22,7 +22,7 @@ const Footer: FC = () => {
             <FooterIcons />
           </div>
         </article>
-        <article>
+        <article >
           <div>
             <form action="" className="md:flex gap-[1rem]">
               <input
